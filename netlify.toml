@@ -1,0 +1,15 @@
+[build]
+  publish = "."
+  command = ""
+
+# App chay hoan toan trong trinh duyet. Khong co buoc build, khong co may chu.
+# API key cua nguoi dung nam trong localStorage may ho, khong bao gio di qua day.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "no-referrer"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://generativelanguage.googleapis.com; form-action 'none'; base-uri 'none'; frame-ancestors 'none'"

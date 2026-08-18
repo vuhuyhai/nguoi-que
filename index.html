@@ -1,0 +1,3252 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Dựng video hoạt hình người que từ một ý tưởng. Kịch bản, hình ảnh, giọng đọc, phụ đề và video hoàn chỉnh, chạy hoàn toàn trong trình duyệt.">
+<meta name="color-scheme" content="light">
+<meta property="og:title" content="NGƯỜI QUE">
+<meta property="og:description" content="Một ý tưởng vào, trọn bộ video người que ra. Chạy trong trình duyệt, không gửi dữ liệu đi đâu.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F7F4EF'/%3E%3Cg stroke='%231A1A1A' stroke-width='2.4' fill='none' stroke-linecap='round'%3E%3Ccircle cx='16' cy='8' r='4.5'/%3E%3Cpath d='M16 12.5v9M16 15l-5 4M16 15l5 4M16 21.5l-4 6M16 21.5l4 6'/%3E%3C/g%3E%3C/svg%3E">
+<title>NGƯỜI QUE — Xưởng video người que</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap&subset=vietnamese" rel="stylesheet">
+<style>
+/* ============================================================
+   NEO-BRUTALISM — Vũ Hải v4.6 "Mono + Graphic"
+   ============================================================ */
+:root{
+  --brand:#c73937; --brand-dark:#a82c2a; --brand-text:#A02824;
+  --accent:#245B6B; --accent-text:#1D4C59; --accent-bg:#E4ECEC;
+  --ink:#1A1A1A; --ink-2:#3D3D3D; --ink-3:#6B6B6B;
+  --line:#1A1A1A; --paper:#FFFFFF; --canvas:#F7F4EF; --canvas-2:#EFEAE1; --hairline:#E4DED4;
+
+  --font-display:"Space Grotesk",system-ui,sans-serif;
+  --font-body:"Inter",system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,monospace;
+
+  --t-hero:clamp(2.75rem,7vw,5.5rem);
+  --t-h1:clamp(2.125rem,5vw,3.5rem);
+  --t-h2:clamp(1.625rem,3.4vw,2.375rem);
+  --t-h3:clamp(1.25rem,2vw,1.5rem);
+  --t-h4:clamp(1.0625rem,1.4vw,1.1875rem);
+  --t-body:1.0625rem; --t-small:.9375rem; --t-label:.8125rem;
+
+  --ls-hero:-0.02em; --ls-head:-0.01em; --ls-label:.06em;
+  --lh-tight:1.08; --lh-head:1.15; --lh-snug:1.35; --lh-body:1.65;
+
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px;
+  --s-6:24px; --s-8:32px; --s-10:40px; --s-12:48px;
+  --s-16:64px; --s-20:80px; --s-24:96px;
+
+  --pad-card:var(--s-6); --pad-card-sm:var(--s-4);
+  --pad-section-y:var(--s-20); --gutter:var(--s-5);
+
+  --bw:2px; --bw-2:3px; --bw-3:5px;
+  --radius:4px; --radius-0:0px;
+  --shadow:4px 4px 0 var(--ink);
+  --shadow-lg:6px 6px 0 var(--ink);
+  --shadow-xl:8px 8px 0 var(--ink);
+  --focus-ring:0 0 0 3px var(--brand);
+
+  --ease:cubic-bezier(0.25,0,0,1); --dur:160ms;
+  --maxw:1100px; --maxw-prose:720px; --grid-gap:var(--s-6);
+
+  --success:#2E7D57; --success-text:#1F5C3F; --success-bg:#E7F0EA;
+  --warning:#B7791F; --warning-text:#8A5A12; --warning-bg:#F6EEDD;
+  --danger:#c73937;  --danger-text:#A02824;  --danger-bg:#F7E7E5;
+  --info:#3D3D3D;    --info-text:#3D3D3D;    --info-bg:#ECECEC;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-style:normal !important;font-optical-sizing:auto;}
+body{background:var(--canvas);color:var(--ink);font-family:var(--font-body);font-size:var(--t-body);
+  line-height:var(--lh-body);word-break:keep-all;overflow-wrap:break-word;line-break:strict;hyphens:none;}
+p,li,h1,h2,h3,h4,.card-title,.hero-title{word-break:keep-all;overflow-wrap:break-word;line-break:strict;hyphens:none;}
+h1,h2,h3,h4,.hero-title,.section-title,.card-title,.subtitle,.lead{text-wrap:balance;}
+p,li,.body-text{text-wrap:pretty;}
+h1,h2,h3,.section-title{font-family:var(--font-display);font-weight:700;letter-spacing:var(--ls-head);line-height:var(--lh-head);}
+h4,.card-title{font-family:var(--font-display);font-weight:600;}
+h1{font-size:var(--t-h1);} h2{font-size:var(--t-h2);} h3{font-size:var(--t-h3);} h4{font-size:var(--t-h4);}
+.stat,.stat-num,.num{font-variant-numeric:tabular-nums;}
+a{color:var(--brand-text);text-decoration-thickness:2px;text-underline-offset:3px;}
+a:hover{color:var(--brand-dark);}
+:focus-visible{outline:none;box-shadow:var(--focus-ring);}
+img{max-width:100%;}
+
+.container{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter);}
+.container--wide{max-width:1400px;}
+.prose{max-width:var(--maxw-prose);}
+.grid{display:grid;gap:var(--grid-gap);}
+.grid-2{grid-template-columns:repeat(2,1fr);}
+.grid-3{grid-template-columns:repeat(3,1fr);}
+.grid-4{grid-template-columns:repeat(4,1fr);}
+.split-a{grid-template-columns:7fr 5fr;align-items:start;}
+.split-b{grid-template-columns:5fr 7fr;align-items:start;}
+@media(max-width:768px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}}
+@media(max-width:900px){.split-a,.split-b{grid-template-columns:1fr;}}
+.stack-4{display:flex;flex-direction:column;gap:var(--s-4);}
+.stack-6{display:flex;flex-direction:column;gap:var(--s-6);}
+.row{display:flex;flex-wrap:wrap;gap:var(--s-3);align-items:center;}
+.row--end{justify-content:flex-end;}
+.row--between{justify-content:space-between;}
+.spacer{flex:1;}
+.hide{display:none !important;}
+
+/* ---------- Buttons ---------- */
+.btn{font-family:var(--font-mono);font-weight:600;font-size:var(--t-small);text-transform:uppercase;
+  letter-spacing:.04em;background:var(--brand);color:var(--paper);border:var(--bw-2) solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow);padding:var(--s-3) var(--s-6);cursor:pointer;
+  min-height:48px;display:inline-flex;align-items:center;gap:var(--s-2);justify-content:center;
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease);}
+.btn:hover:not(:disabled){transform:translate(-2px,-2px);box-shadow:var(--shadow-lg);}
+.btn:active:not(:disabled){transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink);}
+.btn:focus-visible{outline:none;box-shadow:var(--shadow),var(--focus-ring);}
+.btn:disabled{opacity:.45;cursor:not-allowed;}
+.btn--ghost{background:var(--paper);color:var(--ink);}
+.btn--dark{background:var(--ink);color:var(--paper);}
+.btn--sm{padding:var(--s-2) var(--s-4);min-height:40px;font-size:var(--t-label);}
+.btn--block{width:100%;}
+
+/* ---------- Cards ---------- */
+.card{background:var(--paper);border:var(--bw-2) solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:var(--pad-card);}
+.card__head{background:var(--brand);color:var(--paper);border-bottom:var(--bw) solid var(--line);
+  padding:var(--s-3) var(--s-5);font-family:var(--font-mono);font-weight:600;font-size:var(--t-label);
+  text-transform:uppercase;letter-spacing:var(--ls-label);display:flex;align-items:center;gap:var(--s-3);}
+.card--flush{padding:0;overflow:hidden;}
+.card--flush .card__body{padding:var(--pad-card);}
+.grid-card--flat{background:var(--paper);border:var(--bw-2) solid var(--line);border-radius:var(--radius);
+  box-shadow:none;padding:0;overflow:hidden;transition:border-color var(--dur) var(--ease);
+  display:flex;flex-direction:column;}
+.grid-card--flat:hover{border-color:var(--brand);}
+.grid-card--flat:focus-within{box-shadow:var(--focus-ring);}
+@media(max-width:600px){.card{padding:var(--pad-card-sm);} :root{--pad-section-y:var(--s-12);}}
+
+/* ---------- Type bits ---------- */
+.eyebrow{font-family:var(--font-mono);font-weight:500;font-size:var(--t-label);text-transform:uppercase;
+  letter-spacing:var(--ls-label);color:var(--brand-text);}
+.label{font-family:var(--font-mono);font-weight:500;font-size:var(--t-label);text-transform:uppercase;
+  letter-spacing:var(--ls-label);color:var(--ink-2);}
+.mono{font-family:var(--font-mono);}
+.muted{color:var(--ink-3);}
+.tag{font-family:var(--font-mono);font-size:var(--t-label);text-transform:uppercase;letter-spacing:.05em;
+  background:var(--canvas-2);border:var(--bw) solid var(--line);border-radius:var(--radius);
+  padding:var(--s-1) var(--s-3);display:inline-block;}
+.sticker{display:inline-block;background:var(--brand);color:var(--paper);font-family:var(--font-mono);
+  font-weight:600;font-size:var(--t-label);text-transform:uppercase;padding:var(--s-2) var(--s-3);
+  border:var(--bw-2) solid var(--line);border-radius:var(--radius-0);transform:rotate(-1.5deg);
+  box-shadow:var(--shadow);letter-spacing:.05em;}
+.index-num{font-family:var(--font-mono);font-weight:600;font-size:clamp(2.5rem,6vw,4.5rem);
+  color:var(--hairline);line-height:1;}
+.display-giant{font-family:var(--font-display);font-weight:700;font-size:clamp(3.5rem,12vw,9rem);
+  line-height:.9;letter-spacing:-0.03em;}
+.pullquote{font-family:var(--font-display);font-weight:700;font-size:var(--t-h3);line-height:var(--lh-snug);
+  border-left:var(--bw-3) solid var(--brand);padding-left:var(--s-6);letter-spacing:var(--ls-head);}
+
+/* ---------- Icons ---------- */
+.icon{width:24px;height:24px;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:square;
+  stroke-linejoin:miter;flex-shrink:0;}
+.icon--sm{width:16px;height:16px;}
+.icon-box{display:grid;place-content:center;width:48px;height:48px;border:var(--bw-2) solid var(--line);
+  border-radius:var(--radius);background:var(--paper);box-shadow:var(--shadow);color:var(--brand);flex-shrink:0;}
+
+/* ---------- Forms (SECTION 13) ---------- */
+.field{display:flex;flex-direction:column;gap:var(--s-2);}
+.field>label{font-family:var(--font-mono);font-weight:500;font-size:var(--t-label);text-transform:uppercase;
+  letter-spacing:var(--ls-label);color:var(--ink-2);}
+.input,textarea.input,select.input{font-family:var(--font-body);font-size:var(--t-body);color:var(--ink);
+  background:var(--paper);border:var(--bw-2) solid var(--line);border-radius:var(--radius);
+  padding:var(--s-3) var(--s-4);min-height:48px;width:100%;
+  transition:box-shadow var(--dur) var(--ease),border-color var(--dur) var(--ease);}
+textarea.input{min-height:110px;line-height:var(--lh-body);resize:vertical;}
+.input--sm{min-height:40px;padding:var(--s-2) var(--s-3);font-size:var(--t-small);}
+.input::placeholder{color:var(--ink-3);}
+.input:focus-visible{outline:none;border-color:var(--brand);box-shadow:var(--focus-ring);}
+.input:disabled{background:var(--canvas-2);color:var(--ink-3);cursor:not-allowed;}
+.field .hint{font-family:var(--font-mono);font-size:var(--t-label);color:var(--ink-3);}
+.check{display:inline-flex;align-items:center;gap:var(--s-3);font-family:var(--font-body);
+  font-size:var(--t-small);cursor:pointer;}
+.check input{appearance:none;width:24px;height:24px;flex-shrink:0;background:var(--paper);
+  border:var(--bw-2) solid var(--line);border-radius:var(--radius);display:grid;place-content:center;cursor:pointer;}
+.check input:checked{background:var(--brand);}
+.check input:checked::after{content:"";width:10px;height:10px;background:var(--paper);border-radius:1px;}
+.check input:focus-visible{outline:none;box-shadow:var(--focus-ring);}
+
+/* Chip row — dùng cho chọn 1 trong nhiều (SECTION 19C) */
+.chip-row{display:flex;gap:var(--s-2);flex-wrap:wrap;}
+.chip-row--scroll{flex-wrap:nowrap;overflow-x:auto;padding-bottom:var(--s-2);}
+.chip{flex-shrink:0;display:inline-flex;align-items:center;gap:var(--s-2);font-family:var(--font-mono);
+  font-weight:500;font-size:var(--t-label);text-transform:uppercase;letter-spacing:var(--ls-label);
+  background:var(--paper);color:var(--ink);border:var(--bw) solid var(--line);border-radius:var(--radius);
+  padding:var(--s-2) var(--s-4);cursor:pointer;min-height:40px;
+  transition:background var(--dur) var(--ease),color var(--dur) var(--ease);}
+.chip__count{color:var(--ink-3);}
+.chip.is-active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+.chip.is-active .chip__count{color:var(--hairline);}
+.chip:disabled{opacity:.4;cursor:not-allowed;}
+.chip:focus-visible{outline:none;box-shadow:var(--focus-ring);}
+
+/* ---------- Alerts (SECTION 14) ---------- */
+.alert{border:var(--bw-2) solid var(--line);border-left-width:var(--bw-3);border-radius:var(--radius);
+  padding:var(--s-4) var(--s-5);box-shadow:var(--shadow);display:flex;gap:var(--s-3);align-items:flex-start;}
+.alert .title{font-family:var(--font-mono);font-weight:600;font-size:var(--t-label);text-transform:uppercase;
+  letter-spacing:var(--ls-label);}
+.alert .msg{font-family:var(--font-body);font-size:var(--t-small);color:var(--ink-2);}
+.alert--success{background:var(--success-bg);border-left-color:var(--success);}
+.alert--success .title{color:var(--success-text);}
+.alert--warning{background:var(--warning-bg);border-left-color:var(--warning);}
+.alert--warning .title{color:var(--warning-text);}
+.alert--danger{background:var(--danger-bg);border-left-color:var(--danger);}
+.alert--danger .title{color:var(--danger-text);}
+.alert--info{background:var(--info-bg);border-left-color:var(--info);}
+.alert--info .title{color:var(--info-text);}
+
+/* Status pill (19G) */
+.status-pill{display:inline-flex;align-items:center;gap:var(--s-2);border:var(--bw) solid var(--line);
+  border-radius:var(--radius);padding:var(--s-1) var(--s-3);font-family:var(--font-mono);font-weight:600;
+  font-size:var(--t-label);text-transform:uppercase;letter-spacing:var(--ls-label);background:var(--paper);}
+.status-pill__dot{width:8px;height:8px;border-radius:50%;background:var(--success);flex-shrink:0;}
+.status-pill--warning .status-pill__dot{background:var(--warning);}
+.status-pill--danger .status-pill__dot{background:var(--danger);}
+.status-pill--info .status-pill__dot{background:var(--info);}
+@media(prefers-reduced-motion:no-preference){
+  .status-pill--live .status-pill__dot{animation:pulse-dot 2s ease-in-out infinite;}
+}
+@keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:.4;}}
+
+/* ---------- Topbar ---------- */
+.topbar{position:sticky;top:0;z-index:60;background:var(--canvas);
+  border-bottom:var(--bw-2) solid var(--line);}
+.topbar__in{display:flex;align-items:center;gap:var(--s-4);padding-block:var(--s-3);}
+.brandmark{font-family:var(--font-display);font-weight:700;font-size:1.25rem;letter-spacing:-0.01em;
+  display:flex;align-items:center;gap:var(--s-3);text-decoration:none;color:var(--ink);}
+.brandmark b{color:var(--brand-text);}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;overflow:hidden;border-bottom:var(--bw-2) solid var(--line);background:var(--canvas);}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--hairline) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--hairline) 1px,transparent 1px);
+  background-size:34px 34px;opacity:.28;
+  -webkit-mask-image:radial-gradient(120% 100% at 78% 30%,#000 0%,transparent 72%);
+          mask-image:radial-gradient(120% 100% at 78% 30%,#000 0%,transparent 72%);}
+.hero .container{position:relative;z-index:1;padding-block:var(--s-16) var(--s-12);}
+.hero-split{display:grid;grid-template-columns:7fr 5fr;gap:var(--s-12);align-items:center;}
+.hero-title{font-family:var(--font-display);font-weight:700;font-size:var(--t-hero);
+  letter-spacing:var(--ls-hero);line-height:var(--lh-tight);margin-block:var(--s-5) var(--s-4);}
+.hero-sub{font-size:1.125rem;color:var(--ink-2);max-width:52ch;}
+.hero-media{border:var(--bw-3) solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-xl);
+  background:#EFEBD8;transform:rotate(-1deg);padding:var(--s-3);}
+.hero-media svg{display:block;width:100%;height:auto;}
+.hero-media figcaption{font-family:var(--font-mono);font-size:var(--t-label);color:var(--ink-3);
+  text-align:center;padding-top:var(--s-2);}
+@media(max-width:900px){.hero-split{grid-template-columns:1fr;gap:var(--s-8);}
+  .hero-media{transform:none;}}
+
+/* ---------- Marquee ---------- */
+.marquee{overflow:hidden;border-block:var(--bw-2) solid var(--line);background:var(--brand);
+  color:var(--paper);}
+.marquee__track{display:inline-flex;gap:var(--s-8);white-space:nowrap;padding-block:var(--s-2);
+  font-family:var(--font-mono);font-weight:600;text-transform:uppercase;letter-spacing:.08em;
+  font-size:var(--t-label);animation:marquee 28s linear infinite;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ---------- Steps nav ---------- */
+.steps{display:flex;gap:var(--s-2);overflow-x:auto;padding-block:var(--s-5);}
+.step-chip{flex-shrink:0;display:inline-flex;align-items:center;gap:var(--s-2);font-family:var(--font-mono);
+  font-weight:500;font-size:var(--t-label);text-transform:uppercase;letter-spacing:var(--ls-label);
+  background:var(--paper);color:var(--ink);border:var(--bw) solid var(--line);border-radius:var(--radius);
+  padding:var(--s-2) var(--s-4);cursor:pointer;min-height:40px;white-space:nowrap;}
+.step-chip.is-active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+.step-chip.is-done{border-color:var(--success);}
+.step-chip:disabled{opacity:.4;cursor:not-allowed;}
+.step-chip:focus-visible{outline:none;box-shadow:var(--focus-ring);}
+.step-chip .n{color:var(--ink-3);}
+.step-chip.is-active .n{color:var(--hairline);}
+
+/* ---------- Section head ---------- */
+.sec{padding-block:var(--s-8) var(--s-16);}
+.sec__head{display:flex;align-items:flex-start;gap:var(--s-5);margin-bottom:var(--s-8);}
+.sec__head .index-num{flex-shrink:0;}
+
+/* ---------- Scene list (bước kịch bản) ---------- */
+.scene-row{background:var(--paper);border:var(--bw-2) solid var(--line);border-radius:var(--radius);
+  display:grid;grid-template-columns:56px 1fr;overflow:hidden;}
+.scene-row__n{background:var(--canvas-2);border-right:var(--bw) solid var(--line);display:flex;
+  flex-direction:column;align-items:center;gap:var(--s-2);padding-block:var(--s-3);
+  font-family:var(--font-mono);font-weight:600;font-variant-numeric:tabular-nums;}
+.scene-row__body{padding:var(--s-4);display:grid;gap:var(--s-3);min-width:0;}
+.scene-row__grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3);}
+@media(max-width:768px){.scene-row__grid{grid-template-columns:1fr;}}
+.mini-btn{background:var(--paper);border:var(--bw) solid var(--line);border-radius:var(--radius);
+  width:28px;height:28px;display:grid;place-content:center;cursor:pointer;color:var(--ink);}
+.mini-btn:hover{background:var(--brand);color:var(--paper);}
+.mini-btn:focus-visible{outline:none;box-shadow:var(--focus-ring);}
+
+/* ---------- Media grid (ảnh / audio) ---------- */
+.media-grid{display:grid;gap:var(--s-5);grid-template-columns:repeat(auto-fill,minmax(230px,1fr));}
+.media-grid--wide{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));}
+.shot{position:relative;background:#EFEBD8;border-bottom:var(--bw) solid var(--line);
+  display:grid;place-content:center;overflow:hidden;}
+.shot img{width:100%;height:100%;object-fit:cover;display:block;}
+.shot--169{aspect-ratio:16/9;} .shot--916{aspect-ratio:9/16;}
+.shot__ph{font-family:var(--font-mono);font-size:var(--t-label);color:var(--ink-3);text-align:center;
+  padding:var(--s-4);}
+.shot__badge{position:absolute;left:var(--s-2);top:var(--s-2);background:var(--ink);color:var(--paper);
+  font-family:var(--font-mono);font-weight:600;font-size:var(--t-label);padding:var(--s-1) var(--s-2);
+  border-radius:var(--radius);font-variant-numeric:tabular-nums;}
+.shot-body{padding:var(--s-4);display:grid;gap:var(--s-3);min-width:0;flex:1;}
+.shot-body p{font-size:var(--t-small);color:var(--ink-2);}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:var(--s-2);
+  margin-top:auto;padding-top:var(--s-3);border-top:var(--bw) solid var(--hairline);
+  font-family:var(--font-mono);font-weight:600;font-size:var(--t-label);text-transform:uppercase;
+  letter-spacing:var(--ls-label);color:var(--ink);}
+
+/* ---------- Progress bar ---------- */
+.pbar{height:20px;border:var(--bw) solid var(--line);border-radius:var(--radius);background:var(--paper);
+  overflow:hidden;}
+.pbar__fill{height:100%;background:var(--brand);transition:width var(--dur) var(--ease);}
+
+/* ---------- Title options ---------- */
+.title-opt{display:flex;gap:var(--s-4);align-items:flex-start;background:var(--paper);
+  border:var(--bw-2) solid var(--line);border-radius:var(--radius);padding:var(--s-5);cursor:pointer;
+  text-align:left;width:100%;font:inherit;color:inherit;
+  transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease);}
+.title-opt:hover{border-color:var(--brand);}
+.title-opt.is-active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+.title-opt:focus-visible{outline:none;box-shadow:var(--focus-ring);}
+.title-opt .n{font-family:var(--font-mono);font-weight:600;color:var(--brand-text);flex-shrink:0;}
+.title-opt.is-active .n{color:#F0908E;}
+.title-opt .txt{font-family:var(--font-display);font-weight:600;font-size:var(--t-h4);min-width:0;flex:1;}
+
+/* ---------- Drawer (cài đặt) ---------- */
+.drawer-bg{position:fixed;inset:0;background:rgba(26,26,26,.55);z-index:80;display:none;}
+.drawer-bg.is-open{display:block;}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(520px,100%);background:var(--canvas);
+  border-left:var(--bw-3) solid var(--line);z-index:81;transform:translateX(100%);
+  transition:transform var(--dur) var(--ease);overflow-y:auto;}
+.drawer.is-open{transform:translateX(0);}
+.drawer__in{padding:var(--s-6) var(--s-6) var(--s-16);display:grid;gap:var(--s-5);}
+
+/* ---------- Toasts ---------- */
+.toasts{position:fixed;right:var(--s-5);bottom:var(--s-5);z-index:95;display:grid;gap:var(--s-3);
+  width:min(420px,calc(100vw - 40px));}
+.toasts .alert{background:var(--paper);}
+.toasts .alert--danger{background:var(--danger-bg);}
+.toasts .alert--success{background:var(--success-bg);}
+.toasts .alert--warning{background:var(--warning-bg);}
+
+/* ---------- Footer liên hệ (SECTION 17) ---------- */
+.vh-contact{background:var(--ink);color:#F2F0EC;border-top:var(--bw-3) solid var(--line);}
+.vh-contact .container{padding-block:var(--s-16);}
+.vh-contact__grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-12);align-items:center;}
+.vh-name{font-family:var(--font-display);font-weight:700;font-size:clamp(2.5rem,6vw,4rem);
+  letter-spacing:-0.02em;line-height:.95;color:#fff;}
+.vh-tag{font-family:var(--font-mono);font-size:var(--t-label);text-transform:uppercase;letter-spacing:.06em;
+  color:#C9C5BD;margin-top:var(--s-3);}
+.vh-line{font-family:var(--font-display);font-weight:600;color:#F0908E;margin-top:var(--s-4);font-size:1.125rem;}
+.vh-links{list-style:none;display:grid;gap:var(--s-3);}
+.vh-links a{display:flex;align-items:center;gap:var(--s-4);background:#242220;border:var(--bw-2) solid #F2F0EC;
+  border-radius:var(--radius);padding:var(--s-4) var(--s-5);color:#fff;text-decoration:none;
+  box-shadow:4px 4px 0 #F2F0EC;
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),background var(--dur) var(--ease);}
+.vh-links a:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #F0908E;background:var(--brand);}
+.vh-links a:focus-visible{outline:none;box-shadow:4px 4px 0 #F2F0EC,0 0 0 3px var(--brand);}
+.vh-links svg{width:26px;height:26px;stroke:currentColor;stroke-width:2.2;fill:none;stroke-linecap:square;
+  stroke-linejoin:miter;flex-shrink:0;}
+.vh-links .lab{display:flex;flex-direction:column;font-family:var(--font-mono);min-width:0;}
+.vh-links .lab small{font-size:.6875rem;text-transform:uppercase;letter-spacing:.08em;color:#C9C5BD;}
+.vh-links a:hover .lab small{color:#FFD9D7;}
+.vh-links .lab b{font-weight:600;font-size:1rem;overflow-wrap:anywhere;}
+@media(max-width:768px){.vh-contact__grid{grid-template-columns:1fr;gap:var(--s-8);}}
+
+.full-bleed-rule{border:none;border-top:1px solid var(--line);margin:0;width:100%;}
+
+@media(prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important;}}
+@media print{.topbar,.drawer,.drawer-bg,.toasts,.marquee{display:none !important;}}
+</style>
+</head>
+<body>
+
+<!-- ============ TOPBAR ============ -->
+<header class="topbar">
+  <div class="container container--wide topbar__in">
+    <a class="brandmark" href="#top">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="3"/><path d="M12 8v8M12 16l-4 5M12 16l4 5M6 11h12"/></svg>
+      NGƯỜI<b>QUE</b>
+    </a>
+    <span class="spacer"></span>
+    <span id="saveState" class="status-pill status-pill--info"><span class="status-pill__dot"></span><span id="saveStateTxt">Chưa lưu</span></span>
+    <button class="btn btn--ghost btn--sm" id="btnSettings">
+      <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
+      Cài đặt
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO (chỉ hiện ở bước 1) ============ -->
+<header class="hero" id="hero">
+  <div class="container container--wide">
+    <div class="hero-split">
+      <div>
+        <span class="sticker">Xưởng video người que</span>
+        <h1 class="hero-title">Một chủ đề vào.<br>Trọn bộ khung hình&nbsp;ra.</h1>
+        <p class="hero-sub">Nhập một ý tưởng. Máy lo tiêu đề, kịch bản chia cảnh, hình người que, thumbnail, giọng đọc và phụ đề. Kết thúc là một thư mục sẵn sàng để dựng.</p>
+        <div class="row" style="margin-top:var(--s-6)">
+          <span class="tag">Chạy tại máy</span>
+          <span class="tag">Không cần cài đặt</span>
+          <span class="tag">Key nằm ở máy bạn</span>
+        </div>
+      </div>
+      <figure class="hero-media">
+        <svg viewBox="0 0 420 260" role="img" aria-label="Ba khung hình người que minh hoạ sản phẩm của công cụ">
+          <g fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linecap="square">
+            <!-- khung 1 -->
+            <rect x="10" y="14" width="124" height="150"/>
+            <circle cx="72" cy="58" r="15"/>
+            <circle cx="66" cy="55" r="2" fill="#1A1A1A"/><circle cx="78" cy="55" r="2" fill="#1A1A1A"/>
+            <path d="M65 65q7 6 14 0"/>
+            <path d="M72 73v34M72 84l-16 10M72 84l16 10M72 107l-13 22M72 107l13 22"/>
+            <path d="M30 148h84" stroke-width="2"/>
+            <!-- khung 2 -->
+            <rect x="148" y="14" width="124" height="150"/>
+            <circle cx="210" cy="58" r="15"/>
+            <circle cx="204" cy="55" r="2" fill="#1A1A1A"/><circle cx="216" cy="55" r="2" fill="#1A1A1A"/>
+            <path d="M203 67q7-7 14 0"/>
+            <path d="M210 73v34M210 82l-17-4M210 82l17-4M210 107l-13 22M210 107l13 22"/>
+            <path d="M166 148h84" stroke-width="2"/>
+            <!-- khung 3 -->
+            <rect x="286" y="14" width="124" height="150"/>
+            <circle cx="348" cy="58" r="15"/>
+            <path d="M341 53l5 5M346 53l-5 5M351 53l5 5M356 53l-5 5"/>
+            <path d="M340 66h16"/>
+            <path d="M348 73v34M348 80l-17 12M348 80l17 12M348 107l-13 22M348 107l13 22"/>
+            <path d="M304 148h84" stroke-width="2"/>
+            <!-- băng phim -->
+            <path d="M10 182h400M10 232h400"/>
+          </g>
+          <g fill="#1A1A1A">
+            <rect x="22" y="192" width="16" height="30"/><rect x="62" y="192" width="16" height="30"/>
+            <rect x="102" y="192" width="16" height="30"/><rect x="142" y="192" width="16" height="30"/>
+            <rect x="182" y="192" width="16" height="30"/><rect x="222" y="192" width="16" height="30"/>
+            <rect x="262" y="192" width="16" height="30"/><rect x="302" y="192" width="16" height="30"/>
+            <rect x="342" y="192" width="16" height="30"/><rect x="382" y="192" width="16" height="30"/>
+          </g>
+          <g fill="#c73937"><rect x="286" y="14" width="124" height="6"/></g>
+        </svg>
+        <figcaption>Mỗi cảnh 2 giây · nét đen trên nền giấy ngà</figcaption>
+      </figure>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div class="marquee__track">
+  <span>Ý tưởng</span><span>*</span><span>Tiêu đề</span><span>*</span><span>Kịch bản</span><span>*</span>
+  <span>Hình ảnh</span><span>*</span><span>Thumbnail</span><span>*</span><span>Giọng đọc</span><span>*</span><span>Phụ đề</span><span>*</span>
+  <span>Ý tưởng</span><span>*</span><span>Tiêu đề</span><span>*</span><span>Kịch bản</span><span>*</span>
+  <span>Hình ảnh</span><span>*</span><span>Thumbnail</span><span>*</span><span>Giọng đọc</span><span>*</span><span>Phụ đề</span><span>*</span>
+</div></div>
+
+<!-- ============ STEPS NAV ============ -->
+<div class="container container--wide">
+  <nav class="steps" id="stepsNav" aria-label="Các bước"></nav>
+</div>
+<hr class="full-bleed-rule">
+
+<!-- ============ WORKSPACE ============ -->
+<div class="container container--wide">
+
+  <!-- BƯỚC 1 — CHỦ ĐỀ -->
+  <section class="sec" id="sec1">
+    <div class="sec__head">
+      <span class="index-num">01</span>
+      <div>
+        <span class="eyebrow">Bước một</span>
+        <h2>Ý tưởng của bạn là gì?</h2>
+        <p class="muted" style="font-size:var(--t-small)">Một câu là đủ. Càng cụ thể, kịch bản càng sắc.</p>
+      </div>
+    </div>
+
+    <div id="keyWarn" class="alert alert--warning hide" style="margin-bottom:var(--s-6)">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v10M12 18v2"/><path d="M12 2L2 21h20L12 2z"/></svg>
+      <div><div class="title">Chưa có API key</div>
+        <div class="msg">Mở <b>Cài đặt</b> ở góc trên, dán key Google AI Studio rồi bấm Kiểm tra. Key chỉ nằm trong trình duyệt này, không gửi đi đâu ngoài Google.</div></div>
+    </div>
+
+    <div class="grid split-a" id="step1Grid">
+      <div class="card stack-6">
+        <div class="field">
+          <label for="fTopic">Chủ đề</label>
+          <textarea class="input" id="fTopic" placeholder="Ví dụ: vì sao đa số người tập gym bỏ cuộc sau 3 tuần"></textarea>
+          <span class="hint">Gợi ý: đặt một câu hỏi mà người xem đang thầm hỏi.</span>
+        </div>
+
+        <div class="field">
+          <label>Ngôn ngữ</label>
+          <div class="chip-row" id="fLang" role="group"></div>
+        </div>
+
+        <div class="field">
+          <label>Giọng văn</label>
+          <div class="chip-row" id="fTone" role="group"></div>
+        </div>
+
+        <div class="grid grid-2" style="gap:var(--s-5)">
+          <div class="field">
+            <label for="fDur">Thời lượng video</label>
+            <select class="input" id="fDur">
+              <option value="60">Ngắn — khoảng 60 giây</option>
+              <option value="120">Vừa — khoảng 2 phút</option>
+              <option value="180">Dài — khoảng 3 phút</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fSec">Giây mỗi cảnh</label>
+            <select class="input" id="fSec">
+              <option value="2">2 giây — nhịp dồn</option>
+              <option value="3" selected>3 giây — cân bằng</option>
+              <option value="4">4 giây — thong thả</option>
+              <option value="5">5 giây — chậm</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Khung hình</label>
+          <div class="chip-row" id="fAspect" role="group"></div>
+        </div>
+
+        <div class="alert alert--info" id="sceneEstimate">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7v2"/></svg>
+          <div><div class="title">Dự tính</div><div class="msg" id="sceneEstimateTxt">—</div></div>
+        </div>
+
+        <div class="row">
+          <button class="btn" id="btnGenTitles">
+            <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+            Tạo tiêu đề
+          </button>
+          <button class="btn btn--ghost" id="btnSkipTitle">Tự viết tiêu đề</button>
+        </div>
+      </div>
+
+      <div class="stack-4">
+        <div class="card">
+          <h4 style="margin-bottom:var(--s-3)">Dự án đang mở</h4>
+          <p class="mono" id="projInfo" style="font-size:var(--t-small);color:var(--ink-3)">Chưa có gì</p>
+          <div class="row" style="margin-top:var(--s-4)">
+            <button class="btn btn--ghost btn--sm" id="btnExportProj">Xuất .json</button>
+            <button class="btn btn--ghost btn--sm" id="btnImportProj">Mở .json</button>
+            <button class="btn btn--ghost btn--sm" id="btnNewProj">Dự án mới</button>
+          </div>
+          <input type="file" id="fileProj" accept=".json" class="hide">
+        </div>
+        <div class="card">
+          <h4 style="margin-bottom:var(--s-3)">Tự lưu</h4>
+          <p style="font-size:var(--t-small);color:var(--ink-2)">Mọi thứ được ghi vào bộ nhớ trình duyệt sau mỗi thay đổi, kể cả ảnh và giọng đọc. Đóng tab rồi mở lại vẫn còn nguyên.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BƯỚC 2 — TIÊU ĐỀ -->
+  <section class="sec hide" id="sec2">
+    <div class="sec__head">
+      <span class="index-num">02</span>
+      <div>
+        <span class="eyebrow">Bước hai</span>
+        <h2>Chọn tiêu đề</h2>
+        <p class="muted" style="font-size:var(--t-small)">Tiêu đề quyết định người ta bấm hay lướt qua.</p>
+      </div>
+    </div>
+    <div class="stack-4" id="titleList"></div>
+    <div class="card" style="margin-top:var(--s-6)">
+      <div class="field">
+        <label for="fCustomTitle">Hoặc tự viết</label>
+        <input class="input" id="fCustomTitle" placeholder="Gõ tiêu đề của bạn">
+      </div>
+    </div>
+    <div class="row" style="margin-top:var(--s-6)">
+      <button class="btn btn--ghost" data-goto="1">Quay lại</button>
+      <button class="btn" id="btnGenScript">Viết kịch bản</button>
+      <button class="btn btn--ghost" id="btnMoreTitles">Tạo thêm 5 tiêu đề</button>
+    </div>
+  </section>
+
+  <!-- BƯỚC 3 — KỊCH BẢN -->
+  <section class="sec hide" id="sec3">
+    <div class="sec__head">
+      <span class="index-num">03</span>
+      <div>
+        <span class="eyebrow">Bước ba</span>
+        <h2>Duyệt kịch bản</h2>
+        <p class="muted" style="font-size:var(--t-small)">Sửa lời đọc, sửa mô tả hình, thêm hoặc bỏ cảnh. Đây là chỗ đáng bỏ công nhất.</p>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:var(--s-6)">
+      <div class="row row--between">
+        <div class="row">
+          <span class="tag" id="scCount">0 cảnh</span>
+          <span class="tag" id="scWords">0 chữ</span>
+          <span class="tag" id="scTime">~0 giây</span>
+        </div>
+        <div class="row">
+          <button class="btn btn--ghost btn--sm" id="btnShorter">Ngắn gọn hơn</button>
+          <button class="btn btn--ghost btn--sm" id="btnLonger">Chi tiết hơn</button>
+          <button class="btn btn--ghost btn--sm" id="btnAddScene">+ Thêm cảnh</button>
+        </div>
+      </div>
+    </div>
+    <div class="stack-4" id="sceneList"></div>
+    <div class="row" style="margin-top:var(--s-6)">
+      <button class="btn btn--ghost" data-goto="2">Quay lại</button>
+      <button class="btn" id="btnToVisuals">Sang phần hình ảnh</button>
+    </div>
+  </section>
+
+  <!-- BƯỚC 4 — HÌNH ẢNH -->
+  <section class="sec hide" id="sec4">
+    <div class="sec__head">
+      <span class="index-num">04</span>
+      <div>
+        <span class="eyebrow">Bước bốn</span>
+        <h2>Xưởng hình ảnh</h2>
+        <p class="muted" style="font-size:var(--t-small)">Vẽ hàng loạt, vẽ lại từng cảnh, hoặc tự tải ảnh của bạn lên.</p>
+      </div>
+    </div>
+
+    <div id="imgQuotaWarn" class="alert alert--warning hide" style="margin-bottom:var(--s-6)">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v10M12 18v2"/><path d="M12 2L2 21h20L12 2z"/></svg>
+      <div><div class="title">Model ảnh chưa dùng được</div><div class="msg" id="imgQuotaTxt"></div></div>
+    </div>
+
+    <div class="card" style="margin-bottom:var(--s-6)">
+      <div class="stack-4">
+        <div class="row row--between">
+          <div class="row">
+            <span class="tag" id="imgDone">0 / 0 ảnh</span>
+            <span class="status-pill status-pill--info" id="imgStatus"><span class="status-pill__dot"></span><span id="imgStatusTxt">Chờ</span></span>
+            <span id="nguonVe"></span>
+          </div>
+          <div class="row">
+            <button class="btn btn--ghost btn--sm" id="btnCheckImgModel">Kiểm tra model ảnh</button>
+            <button class="btn btn--ghost btn--sm hide" id="btnStopImg">Dừng</button>
+            <button class="btn btn--sm" id="btnGenAllImg">Vẽ các cảnh còn thiếu</button>
+          </div>
+        </div>
+        <div class="pbar"><div class="pbar__fill" id="imgBar" style="width:0%"></div></div>
+      </div>
+    </div>
+
+    <div class="card card--flush" style="margin-bottom:var(--s-6)">
+      <div class="card__head">
+        <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h16M9 9v11"/></svg>
+        Tuỳ chọn: vẽ hàng loạt bằng extension Chrome
+      </div>
+      <div class="card__body stack-4">
+        <p style="font-size:var(--t-small);color:var(--ink-2)">Dùng khi extension ChatGPT chưa cài, hoặc ChatGPT hết lượt tạo ảnh. Lấy danh sách prompt ở đây, dán vào extension Gemini, rồi nạp cả thư mục ảnh ngược lại. Chậm hơn cách tự động vì phải qua tay, nhưng không phụ thuộc ChatGPT.</p>
+
+        <div class="row">
+          <button class="btn btn--sm" id="btnChepPrompt">
+            <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11"/><path d="M5 15V4h11"/></svg>
+            Chép danh sách prompt
+          </button>
+          <button class="btn btn--ghost btn--sm" id="btnTaiPrompt">Tải .txt</button>
+          <span class="spacer"></span>
+          <button class="btn btn--dark btn--sm" id="btnNapThuMuc">
+            <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h6l2 3h10v10H3z"/><path d="M12 17v-5M9 14l3-3 3 3"/></svg>
+            Nạp ảnh từ thư mục
+          </button>
+          <button class="btn btn--ghost btn--sm" id="btnNapNhieuFile">Chọn từng file</button>
+        </div>
+
+        <details>
+          <summary class="label" style="cursor:pointer;padding-block:var(--s-2)">Cài extension thế nào cho khớp (bấm để mở)</summary>
+          <div class="stack-3" style="padding-top:var(--s-3);font-size:var(--t-small);color:var(--ink-2)">
+            <p>Trong popup extension, đặt đúng bốn ô sau. Ba ô đầu là chỗ hay sai nhất.</p>
+            <ul style="list-style:none;display:grid;gap:var(--s-3)">
+              <li><span class="tag">Khuôn prompt</span> để <b>trống</b>. Danh sách này đã là câu lệnh đầy đủ, bọc thêm là hỏng.</li>
+              <li><span class="tag">Câu thêm vào cuối</span> để <b>trống</b>. Câu style mặc định là ảnh chụp châu Á, dán vào sẽ mất sạch nét người que.</li>
+              <li><span class="tag">Tiền tố tên file</span> gõ <b class="mono">canh</b>. Thư mục lưu gõ <b class="mono">nguoi-que</b>.</li>
+              <li><span class="tag">Kích thước ảnh</span> chọn <b class="mono" id="tlKhuyenNghi">9:16</b>, đúng khung hình dự án này.</li>
+            </ul>
+            <p>Chạy xong, ảnh nằm ở <b class="mono">Downloads\nguoi-que</b>. Bấm <b>Nạp ảnh từ thư mục</b> rồi chọn đúng thư mục đó. App ghép ảnh vào cảnh theo số thứ tự trong tên file, không cần đổi tên tay.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="media-grid" id="imgGrid"></div>
+    <input type="file" id="fileImg" accept="image/*" class="hide">
+    <input type="file" id="fileAnhLoat" accept="image/*" multiple class="hide">
+    <input type="file" id="fileAnhThuMuc" webkitdirectory directory multiple class="hide">
+
+    <div class="row" style="margin-top:var(--s-6)">
+      <button class="btn btn--ghost" data-goto="3">Quay lại</button>
+      <button class="btn" id="btnToThumb">Sang thumbnail</button>
+    </div>
+  </section>
+
+  <!-- BƯỚC 5 — THUMBNAIL -->
+  <section class="sec hide" id="sec5">
+    <div class="sec__head">
+      <span class="index-num">05</span>
+      <div>
+        <span class="eyebrow">Bước năm</span>
+        <h2>Thumbnail</h2>
+        <p class="muted" style="font-size:var(--t-small)">Ảnh bìa. Không chữ trong ảnh, để bạn tự đặt chữ khi dựng.</p>
+      </div>
+    </div>
+    <div class="grid split-b" id="thumbGrid">
+      <div class="grid-card--flat">
+        <div class="shot shot--169" id="thumbShot"><div class="shot__ph">Chưa có thumbnail</div></div>
+        <div class="shot-body">
+          <div class="row">
+            <button class="btn btn--sm" id="btnGenThumb">Vẽ thumbnail</button>
+            <button class="btn btn--ghost btn--sm" id="btnUploadThumb">Tải ảnh lên</button>
+            <button class="btn btn--ghost btn--sm hide" id="btnDlThumb">Tải về</button>
+          </div>
+        </div>
+      </div>
+      <div class="card stack-4">
+        <div class="field">
+          <label for="fThumbIdea">Ý hình cho thumbnail</label>
+          <textarea class="input" id="fThumbIdea" placeholder="Ví dụ: người que đứng trước hai cánh cửa, mặt bối rối"></textarea>
+          <span class="hint">Bỏ trống thì lấy theo cảnh đầu tiên.</span>
+        </div>
+      </div>
+    </div>
+    <input type="file" id="fileThumb" accept="image/*" class="hide">
+    <div class="row" style="margin-top:var(--s-6)">
+      <button class="btn btn--ghost" data-goto="4">Quay lại</button>
+      <button class="btn" id="btnToAudio">Sang giọng đọc</button>
+    </div>
+  </section>
+
+  <!-- BƯỚC 6 — GIỌNG ĐỌC -->
+  <section class="sec hide" id="sec6">
+    <div class="sec__head">
+      <span class="index-num">06</span>
+      <div>
+        <span class="eyebrow">Bước sáu</span>
+        <h2>Phòng thu</h2>
+        <p class="muted" style="font-size:var(--t-small)">Đọc riêng từng cảnh. Có thời lượng thật của từng cảnh thì phụ đề mới khớp.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:var(--s-6)">
+      <div class="stack-4">
+        <div class="row row--between">
+          <div class="row">
+            <span class="tag" id="audDone">0 / 0 cảnh</span>
+            <span class="tag" id="audTotal">~0 giây</span>
+            <span class="tag" id="audGiong">—</span>
+            <span class="status-pill status-pill--info" id="audStatus"><span class="status-pill__dot"></span><span id="audStatusTxt">Chờ</span></span>
+          </div>
+          <div class="row">
+            <button class="btn btn--ghost btn--sm hide" id="btnStopAud">Dừng</button>
+            <button class="btn btn--ghost btn--sm" id="btnDocLaiHet">Đọc lại tất cả</button>
+            <button class="btn btn--sm" id="btnGenAllAud">Đọc các cảnh còn thiếu</button>
+          </div>
+        </div>
+        <div class="pbar"><div class="pbar__fill" id="audBar" style="width:0%"></div></div>
+        <div class="row">
+          <span class="label">Nghe cả bài</span>
+          <audio id="audMerged" controls class="hide" style="flex:1;min-width:240px"></audio>
+          <button class="btn btn--ghost btn--sm" id="btnMerge">Ghép cả bài</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack-4" id="audList"></div>
+
+    <div class="row" style="margin-top:var(--s-6)">
+      <button class="btn btn--ghost" data-goto="5">Quay lại</button>
+      <button class="btn" id="btnToExport">Sang phần xuất</button>
+    </div>
+  </section>
+
+  <!-- BƯỚC 7 — XUẤT -->
+  <section class="sec hide" id="sec7">
+    <div class="sec__head">
+      <span class="index-num">07</span>
+      <div>
+        <span class="eyebrow">Bước bảy</span>
+        <h2>Đóng gói</h2>
+        <p class="muted" style="font-size:var(--t-small)">Một file ZIP, mở ra là dựng được ngay.</p>
+      </div>
+    </div>
+
+    <div class="card card--flush" style="margin-bottom:var(--s-6)">
+          <div class="card__head"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM10 9l5 3-5 3z"/></svg>Dựng video ngay tại đây</div>
+          <div class="card__body">
+            <div class="grid split-a">
+              <div class="stack-4">
+                <p style="font-size:var(--t-small);color:var(--ink-2)">Không tải gì về, không chạy file nào. Trình duyệt tự quay rồi đưa anh file video.</p>
+                <label class="check"><input type="checkbox" id="vidSub" checked> Chèn phụ đề vào hình</label>
+                <div class="alert alert--warning" id="vidNhac">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v10M12 18v2"/><path d="M12 2L2 21h20L12 2z"/></svg>
+                  <div><div class="title">Quay theo thời gian thật</div><div class="msg" id="vidNhacTxt">—</div></div>
+                </div>
+                <div class="row">
+                  <button class="btn" id="btnDungVideo"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4l14 8-14 8z"/></svg>Dựng video</button>
+                  <button class="btn btn--ghost hide" id="btnHuyVideo">Huỷ</button>
+                  <button class="btn btn--dark hide" id="btnLuuVideo"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M4 20h16"/></svg>Lưu video</button>
+                </div>
+                <div class="pbar hide" id="vidBarWrap"><div class="pbar__fill" id="vidBar" style="width:0%"></div></div>
+                <p class="mono" id="vidTrangThai" style="font-size:var(--t-label);color:var(--ink-3)"></p>
+              </div>
+              <figure style="margin:0">
+                <canvas id="videoXem" style="width:100%;max-width:260px;border:var(--bw-2) solid var(--line);border-radius:var(--radius);background:#FDF6E3;display:block;margin-inline:auto"></canvas>
+                <figcaption class="mono" style="font-size:var(--t-label);color:var(--ink-3);text-align:center;padding-top:var(--s-2)">Xem trước khi quay</figcaption>
+              </figure>
+            </div>
+            <video id="videoKq" controls class="hide" style="width:100%;max-width:320px;margin-top:var(--s-5);border:var(--bw-2) solid var(--line);border-radius:var(--radius);display:block"></video>
+          </div>
+        </div>
+        <div class="grid split-a" id="exportGrid">
+      <div class="card stack-4">
+        <h4>Chọn thứ cần đóng gói</h4>
+        <label class="check"><input type="checkbox" id="exImg" checked> Ảnh từng cảnh (.png)</label>
+        <label class="check"><input type="checkbox" id="exThumb" checked> Thumbnail (.png)</label>
+        <label class="check"><input type="checkbox" id="exAud" checked> Giọng đọc từng cảnh (.wav)</label>
+        <label class="check"><input type="checkbox" id="exMerged" checked> Giọng đọc cả bài (.wav)</label>
+        <label class="check"><input type="checkbox" id="exSrt" checked> Phụ đề (.srt)</label>
+        <label class="check"><input type="checkbox" id="exTxt" checked> Kịch bản (.txt)</label>
+        <label class="check"><input type="checkbox" id="exCsv" checked> Bảng dựng (.csv)</label>
+        <label class="check"><input type="checkbox" id="exJson" checked> File dự án (.json)</label>
+        <hr style="border:none;border-top:var(--bw) solid var(--hairline);margin-block:var(--s-2)">
+        <label class="check"><input type="checkbox" id="exVideo" checked> <b>Bộ dựng video tự động (.bat)</b></label>
+        <label class="check"><input type="checkbox" id="exSub"> Chèn sẵn phụ đề vào video</label>
+        <div class="row" style="margin-top:var(--s-4)">
+          <button class="btn" id="btnZip">
+            <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M4 20h16"/></svg>
+            Tải toàn bộ (.zip)
+          </button>
+        </div>
+        <div class="pbar hide" id="zipBarWrap"><div class="pbar__fill" id="zipBar" style="width:0%"></div></div>
+      </div>
+
+      <div class="stack-4">
+        <div class="card">
+          <h4 style="margin-bottom:var(--s-3)">Trong gói có gì</h4>
+          <ul class="mono" style="font-size:var(--t-label);list-style:none;display:grid;gap:var(--s-2);color:var(--ink-2)">
+            <li>anh/canh-01.png …</li>
+            <li>audio/canh-01.wav …</li>
+            <li>audio/ca-bai.wav</li>
+            <li>phu-de.srt</li>
+            <li>kich-ban.txt</li>
+            <li>bang-dung.csv</li>
+            <li>du-an.json</li>
+            <li>dung-video.bat</li>
+          </ul>
+        </div>
+        <div class="card card--flush">
+          <div class="card__head"><svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM10 9l5 3-5 3z"/></svg>Dựng thành video</div>
+          <div class="card__body">
+            <ol style="padding-left:var(--s-5);display:grid;gap:var(--s-2);font-size:var(--t-small);color:var(--ink-2)">
+              <li>Giải nén file ZIP ra một thư mục.</li>
+              <li>Nhấp đúp <b class="mono">dung-video.bat</b>.</li>
+              <li>Chờ. Xong có <b class="mono">video.mp4</b> ngay cạnh.</li>
+            </ol>
+            <p style="font-size:var(--t-small);color:var(--ink-2);margin-top:var(--s-3)">Cần ffmpeg trên máy. Chưa có thì file .bat sẽ chỉ cách cài. Không phải mở phần mềm dựng nào.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h4 style="margin-bottom:var(--s-3)">Bảng dựng dùng làm gì</h4>
+          <p style="font-size:var(--t-small);color:var(--ink-2)">Mở bằng Excel. Mỗi dòng một cảnh, có sẵn mốc bắt đầu, mốc kết thúc, tên file ảnh và tên file audio. Kéo theo thứ tự là xong dòng thời gian.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:var(--s-6)">
+      <button class="btn btn--ghost" data-goto="6">Quay lại</button>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<!-- ============ DRAWER CÀI ĐẶT ============ -->
+<div class="drawer-bg" id="drawerBg"></div>
+<aside class="drawer" id="drawer" aria-label="Cài đặt" aria-hidden="true">
+  <div class="drawer__in">
+    <div class="row row--between">
+      <h3>Cài đặt</h3>
+      <button class="btn btn--ghost btn--sm" id="btnCloseDrawer">Đóng</button>
+    </div>
+
+    <div class="card stack-4">
+      <div class="field">
+        <label for="fKey">API key Google AI Studio</label>
+        <input class="input" id="fKey" type="password" placeholder="Dán key vào đây" autocomplete="off">
+        <span class="hint">Lấy miễn phí tại aistudio.google.com/apikey. Key nằm trong trình duyệt này, không đi đâu khác ngoài máy chủ Google.</span>
+      </div>
+      <div class="row">
+        <button class="btn btn--sm" id="btnTestKey">Kiểm tra key</button>
+        <button class="btn btn--ghost btn--sm" id="btnShowKey">Hiện key</button>
+        <button class="btn btn--ghost btn--sm" id="btnClearKey">Xoá key</button>
+      </div>
+      <div id="keyResult"></div>
+    </div>
+
+    <div class="card stack-4">
+      <h4>Model</h4>
+      <p style="font-size:var(--t-small);color:var(--ink-2)">Google gỡ model xem trước khá thường. App tự dò danh sách còn sống theo key của bạn rồi chọn giúp. Muốn đổi thì chọn tay.</p>
+      <div class="field">
+        <label for="fModelText">Model chữ (tiêu đề, kịch bản)</label>
+        <select class="input" id="fModelText"><option>Bấm Kiểm tra key trước</option></select>
+      </div>
+      <div class="field">
+        <label for="fModelImage">Model ảnh</label>
+        <select class="input" id="fModelImage"><option>Bấm Kiểm tra key trước</option></select>
+      </div>
+      <div class="field">
+        <label for="fModelTts">Model giọng đọc</label>
+        <select class="input" id="fModelTts"><option>Bấm Kiểm tra key trước</option></select>
+      </div>
+      <button class="btn btn--ghost btn--sm" id="btnAutoPick">Chọn lại tự động</button>
+    </div>
+
+    <div class="card stack-4">
+      <h4>Giọng đọc</h4>
+      <div class="field">
+        <label for="fVoice">Chất giọng</label>
+        <select class="input" id="fVoice"></select>
+        <span class="hint">Giọng của Google. Đọc được tiếng Việt, nhưng chất giọng thì cố định theo tên.</span>
+      </div>
+      <div class="field">
+        <label for="fVung">Giọng vùng miền</label>
+        <select class="input" id="fVung">
+          <option value="bac">Miền Bắc, chuẩn Hà Nội</option>
+          <option value="nam">Miền Nam, chuẩn Sài Gòn</option>
+          <option value="">Để model tự chọn</option>
+        </select>
+        <span class="hint">Mỗi cảnh là một lần gọi riêng nên model hay đổi vùng miền giữa chừng. Chốt ở đây thì cả bài một giọng.</span>
+      </div>
+      <div class="field">
+        <label for="fSpeed">Lối đọc</label>
+        <select class="input" id="fSpeed">
+          <option value="">Bình thường</option>
+          <option value="Đọc chậm rãi, rõ ràng, ngắt nghỉ dứt khoát: ">Chậm và rõ</option>
+          <option value="Đọc nhanh, dồn dập, đầy năng lượng: ">Nhanh và dồn</option>
+          <option value="Đọc trầm, điềm tĩnh, như đang kể chuyện riêng: ">Trầm và điềm tĩnh</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card stack-4">
+      <h4>Hình ảnh</h4>
+      <div class="field">
+        <label for="fKieuPD">Kiểu phụ đề trong video</label>
+        <select class="input" id="fKieuPD">
+          <option value="dai">Dải riêng ở đáy, hình co lên trên</option>
+          <option value="de">Đè lên hình, chữ viền trắng</option>
+        </select>
+        <span class="hint">Ảnh người que thường có sẵn chữ ở đáy. Kiểu đè sẽ chồng lên chữ đó.</span>
+      </div>
+      <label class="check"><input type="checkbox" id="fNoDiacritic"> Bỏ dấu chữ tiếng Việt vẽ trong ảnh</label>
+      <p style="font-size:var(--t-small);color:var(--ink-2)">Model ảnh hay viết sai dấu tiếng Việt. Bật cái này thì chữ trong ảnh không dấu nhưng nhìn sạch. Lời đọc và phụ đề vẫn giữ nguyên dấu.</p>
+      <div class="field">
+        <label for="fConc">Số ảnh vẽ cùng lúc</label>
+        <select class="input" id="fConc">
+          <option value="1">1 — chậm, an toàn nhất</option>
+          <option value="2" selected>2 — cân bằng</option>
+          <option value="3">3 — nhanh, dễ bị chặn tốc độ</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card stack-4">
+      <h4>Video</h4>
+      <div class="field">
+        <label for="fCC">Hiệu ứng chuyển cảnh</label>
+        <select class="input" id="fCC"></select>
+        <span class="hint">Chạy gọn trong khoảng lặng 0,25 giây giữa hai cảnh, không ăn vào thời gian nói.</span>
+      </div>
+      <div class="field">
+        <label for="fTD">Tiếng động chuyển cảnh</label>
+        <select class="input" id="fTD"></select>
+      </div>
+      <div class="field">
+        <label for="fToTD">Độ to tiếng động</label>
+        <input class="input" id="fToTD" type="range" min="0" max="100" step="5" style="padding:0;min-height:40px">
+        <span class="hint" id="fToTDTxt">35%</span>
+      </div>
+      <div class="row">
+        <button class="btn btn--ghost btn--sm" id="btnNgheTD">Nghe thử</button>
+      </div>
+    </div>
+
+    <div class="card stack-4">
+      <h4>Nhạc nền</h4>
+      <p class="mono" id="nhacTen" style="font-size:var(--t-label);color:var(--ink-3)">Chưa có</p>
+      <div class="row">
+        <button class="btn btn--ghost btn--sm" id="btnChonNhac">Chọn file nhạc</button>
+        <button class="btn btn--ghost btn--sm" id="btnBoNhac">Bỏ nhạc</button>
+      </div>
+      <input type="file" id="fileNhac" accept="audio/*" class="hide">
+      <div class="field">
+        <label for="fToNhac">Độ to nhạc nền</label>
+        <input class="input" id="fToNhac" type="range" min="0" max="40" step="2" style="padding:0;min-height:40px">
+        <span class="hint" id="fToNhacTxt">12%</span>
+      </div>
+      <p style="font-size:var(--t-small);color:var(--ink-2)">Nhạc tự lặp cho đủ độ dài video và tắt dần ở hai giây cuối. Để nhỏ thôi, lời đọc mới rõ.</p>
+    </div>
+
+    <div class="card stack-4">
+      <h4>Dọn dẹp</h4>
+      <button class="btn btn--ghost btn--sm" id="btnWipe">Xoá toàn bộ dữ liệu trong máy</button>
+      <p style="font-size:var(--t-small);color:var(--ink-2)">Xoá dự án, ảnh, audio và key khỏi trình duyệt. Không lấy lại được.</p>
+    </div>
+  </div>
+</aside>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<!-- ============ FOOTER LIÊN HỆ ============ -->
+<footer class="vh-contact">
+  <div class="container">
+    <div class="vh-contact__grid">
+      <div class="vh-brand">
+        <div class="vh-name">VŨ HẢI</div>
+        <p class="vh-tag">Operational Excellence · Ngành Fitness</p>
+        <p class="vh-line">Phân vai, không phân hạng.</p>
+      </div>
+      <ul class="vh-links">
+        <li><a href="tel:0344444000">
+          <svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>
+          <span class="lab"><small>Điện thoại</small><b>0344 444 000</b></span></a></li>
+        <li><a href="mailto:fitnessviet@gmail.com">
+          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M4 7l8 6 8-6"/></svg>
+          <span class="lab"><small>Email</small><b>fitnessviet@gmail.com</b></span></a></li>
+        <li><a href="https://www.facebook.com/vuhai.fitness/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M15 8h-2a2 2 0 00-2 2v11M9 13h5"/></svg>
+          <span class="lab"><small>Facebook</small><b>facebook.com/vuhai.fitness</b></span></a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+"use strict";
+/* ================================================================
+   NGƯỜI QUE — xưởng video người que
+   Chạy hoàn toàn trong trình duyệt. Không backend, không build.
+   ================================================================ */
+
+/* ---------------- tiện ích chung ---------------- */
+const $  = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const pad2 = n => String(n).padStart(2, '0');
+const esc = s => String(s == null ? '' : s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+  .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const boDau = s => String(s || '').normalize('NFD')
+  .replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D');
+const demChu = s => String(s || '').trim().split(/\s+/).filter(Boolean).length;
+const uid = () => 'c' + Math.random().toString(36).slice(2, 9) + Date.now().toString(36).slice(-4);
+
+function toast(kind, title, msg, ms) {
+  const el = document.createElement('div');
+  el.className = 'alert alert--' + kind;
+  const ico = kind === 'success'
+    ? '<path d="M4 12l5 5L20 6"/>'
+    : kind === 'danger'
+      ? '<path d="M12 2L2 21h20L12 2z"/><path d="M12 9v6M12 18v1"/>'
+      : '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7v2"/>';
+  el.innerHTML = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">' + ico + '</svg>' +
+    '<div style="min-width:0"><div class="title">' + esc(title) + '</div>' +
+    '<div class="msg">' + esc(msg || '') + '</div></div>';
+  $('#toasts').appendChild(el);
+  setTimeout(() => el.remove(), ms || (kind === 'danger' ? 12000 : 5000));
+}
+
+/* ---------------- IndexedDB: chứa dự án kèm ảnh/audio ---------------- */
+const DB = (() => {
+  const NAME = 'nguoi-que', STORE = 'kv';
+  let p;
+  function open() {
+    if (p) return p;
+    p = new Promise((res, rej) => {
+      const rq = indexedDB.open(NAME, 1);
+      rq.onupgradeneeded = () => rq.result.createObjectStore(STORE);
+      rq.onsuccess = () => res(rq.result);
+      rq.onerror = () => rej(rq.error);
+    });
+    return p;
+  }
+  async function tx(mode, fn) {
+    const db = await open();
+    return new Promise((res, rej) => {
+      const t = db.transaction(STORE, mode);
+      const rq = fn(t.objectStore(STORE));
+      rq.onsuccess = () => res(rq.result);
+      rq.onerror = () => rej(rq.error);
+    });
+  }
+  return {
+    get: k => tx('readonly', s => s.get(k)),
+    set: (k, v) => tx('readwrite', s => s.put(v, k)),
+    del: k => tx('readwrite', s => s.delete(k))
+  };
+})();
+
+/* ---------------- trạng thái ---------------- */
+const NGON_NGU = {
+  vi: {
+    ten: 'Tiếng Việt', co: 'VN',
+    vaiTro: 'chiến lược gia YouTube cho thị trường Việt Nam',
+    congThuc: '1. Lột xác: [Hành động] + [Đối tượng] + [Trạng thái mạnh]\n2. Sự thật phũ: Tại sao bạn mãi [thất bại] dù đã [cố gắng]?\n3. Lời cảnh báo: [Dừng ngay] nếu không muốn [hậu quả].',
+    giongVan: 'Đời thường, thẳng, dùng cách nói của người Việt. Không sáo rỗng.',
+    chuTrongAnh: 'Chữ trong ảnh viết bằng tiếng Việt.'
+  },
+  en: {
+    ten: 'English', co: 'EN',
+    vaiTro: 'viral YouTube strategist for the global market',
+    congThuc: '1. Transformation: How I became [state] by doing [action].\n2. Harsh truth: Why you are still [stuck] despite [effort].\n3. Warning: Stop doing [action] right now.',
+    giongVan: 'Punchy, idiomatic English, direct.',
+    chuTrongAnh: 'Text inside the image must be English.'
+  },
+  ja: {
+    ten: '日本語', co: 'JA',
+    vaiTro: 'viral YouTube strategist for the Japanese market',
+    congThuc: '1. Transformation. 2. Harsh truth. 3. Warning. Use strong kanji.',
+    giongVan: 'High-context, manga-style structure, polite yet impactful.',
+    chuTrongAnh: 'Text inside the image must be Japanese.'
+  }
+};
+const TONE = {
+  stoic:        'Khắc kỷ, điềm tĩnh',
+  motivational: 'Truyền lửa, thúc đẩy',
+  dark:         'Triết lý, hơi tối',
+  humor:        'Hài hước, châm biếm'
+};
+const GIONG = ['Kore','Puck','Charon','Aoede','Leda','Fenrir','Orus','Zephyr','Enceladus','Sulafat'];
+
+const UT_TEXT  = ['gemini-3.7-flash','gemini-3.6-flash','gemini-3.5-flash','gemini-3-flash-preview',
+                  'gemini-3.1-flash-lite','gemini-2.5-flash','gemini-flash-latest'];
+const UT_IMAGE = ['gemini-3.1-flash-image','gemini-3-pro-image','gemini-3-pro-image-preview',
+                  'gemini-3.1-flash-image-preview','gemini-2.5-flash-image','gemini-3.1-flash-lite-image'];
+const UT_TTS   = ['gemini-2.5-flash-preview-tts','gemini-3.1-flash-tts-preview','gemini-2.5-pro-preview-tts'];
+
+let CH = {          // cấu hình, lưu ở localStorage
+  key: '', modelText: '', modelImage: '', modelTts: '',
+  voice: 'Kore', speed: '', boDauAnh: false, songSong: 2, vungMien: 'bac', kieuPhuDe: 'dai',
+  chuyenCanh: 'mo', tiengDong: 'vut', toTiengDong: 35, toNhac: 12,
+  models: []
+};
+let DA = {          // dự án, lưu ở IndexedDB
+  topic: '', lang: 'vi', tone: 'stoic', duration: 60, secPerScene: 3, aspect: '9:16',
+  titles: [], title: '', thumbIdea: '', anhMau: null, nhac: null, nhacTen: '',
+  scenes: [],       // {id, loi, hinh, chu, anh:Blob, pcm:Uint8Array, giay}
+  thumb: null,      // Blob
+  step: 1, taoLuc: null
+};
+let mergedUrl = null;
+let dungLai = false;
+
+/* ---------------- lưu / nạp ---------------- */
+function luuCH() { localStorage.setItem('nguoi-que:cauhinh', JSON.stringify(CH)); }
+function napCH() {
+  try {
+    const raw = localStorage.getItem('nguoi-que:cauhinh');
+    if (raw) CH = Object.assign(CH, JSON.parse(raw));
+  } catch (e) { /* cấu hình hỏng thì dùng mặc định */ }
+}
+let luuTimer = null;
+function luuDA(ngay) {
+  clearTimeout(luuTimer);
+  const chay = async () => {
+    try {
+      await DB.set('duan', DA);
+      $('#saveStateTxt').textContent = 'Đã lưu ' + new Date().toLocaleTimeString('vi-VN');
+      $('#saveState').className = 'status-pill status-pill--info';
+    } catch (e) {
+      $('#saveStateTxt').textContent = 'Lưu lỗi';
+      $('#saveState').className = 'status-pill status-pill--danger';
+    }
+  };
+  if (ngay) chay(); else luuTimer = setTimeout(chay, 700);
+}
+async function napDA() {
+  try {
+    const d = await DB.get('duan');
+    if (d && d.scenes) DA = Object.assign(DA, d);
+  } catch (e) { /* chưa có dự án */ }
+}
+
+/* ---------------- gọi Gemini ---------------- */
+const GOC = 'https://generativelanguage.googleapis.com/v1beta';
+
+class LoiAPI extends Error {
+  constructor(msg, status, raw) { super(msg); this.status = status; this.raw = raw || ''; }
+}
+
+function dichLoi(status, chiTiet, model) {
+  const t = String(chiTiet || '');
+  if (status === 400 && /API key not valid|API_KEY_INVALID/i.test(t))
+    return 'API key không hợp lệ. Mở Cài đặt và dán lại key.';
+  if (status === 403) return 'Key bị từ chối. Kiểm tra key còn hiệu lực và đã bật Generative Language API.';
+  if (status === 404) return 'Model "' + model + '" không còn tồn tại. Mở Cài đặt, bấm Kiểm tra key để dò lại danh sách model.';
+  if (status === 429 && /limit: 0/.test(t))
+    return 'Model "' + model + '" không có trong bậc miễn phí. Chọn model khác trong Cài đặt, hoặc bật thanh toán cho dự án Google Cloud của key này.';
+  if (status === 429) return 'Vượt hạn mức tạm thời. Đợi một lát rồi thử lại, hoặc giảm số việc chạy cùng lúc.';
+  if (status === 503) return 'Máy chủ Google đang quá tải. Thử lại sau ít phút.';
+  if (status === 0)   return 'Không nối được mạng tới Google. Kiểm tra đường truyền.';
+  return 'Lỗi ' + status + (t ? ' — ' + t.slice(0, 200) : '');
+}
+
+async function goi(model, body, opt) {
+  opt = opt || {};
+  const lanToiDa = opt.retry == null ? 4 : opt.retry;
+  let cho = 2500;
+  for (let lan = 0; ; lan++) {
+    if (dungLai && opt.huyDuoc) throw new LoiAPI('Đã dừng theo yêu cầu.', 0);
+    let res;
+    try {
+      res = await fetch(GOC + '/models/' + model + ':generateContent?key=' + encodeURIComponent(CH.key), {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
+      });
+    } catch (e) {
+      if (lan < lanToiDa) { await sleep(cho); cho *= 1.6; continue; }
+      throw new LoiAPI(dichLoi(0, '', model), 0);
+    }
+    if (res.ok) return res.json();
+
+    let chiTiet = '';
+    try { const j = await res.json(); chiTiet = (j.error && j.error.message) || ''; } catch (e) {}
+    const thuLai = res.status === 429 || res.status >= 500;
+    const hetHan = /limit: 0/.test(chiTiet);          // hạn mức 0 thì thử lại vô ích
+    if (thuLai && !hetHan && lan < lanToiDa) { await sleep(cho); cho = cho * 1.6 + Math.random() * 800; continue; }
+    throw new LoiAPI(dichLoi(res.status, chiTiet, model), res.status, chiTiet);
+  }
+}
+
+function layChu(j) {
+  const p = j && j.candidates && j.candidates[0] && j.candidates[0].content && j.candidates[0].content.parts;
+  if (!p) return '';
+  return p.map(x => x.text || '').join('').trim();
+}
+function layAnh(j) {
+  const p = j && j.candidates && j.candidates[0] && j.candidates[0].content && j.candidates[0].content.parts;
+  if (!p) return null;
+  for (const x of p) if (x.inlineData && x.inlineData.data) return x.inlineData;
+  return null;
+}
+function b64ToBytes(b64) {
+  const s = atob(b64), a = new Uint8Array(s.length);
+  for (let i = 0; i < s.length; i++) a[i] = s.charCodeAt(i);
+  return a;
+}
+function jsonTuChu(s) {
+  let t = String(s || '').trim();
+  t = t.replace(/^```(?:json)?/i, '').replace(/```$/, '').trim();
+  const d = t.indexOf('['), c = t.lastIndexOf(']');
+  if (d >= 0 && c > d) t = t.slice(d, c + 1);
+  return JSON.parse(t);
+}
+
+/* ---------------- dò model ---------------- */
+async function doModel() {
+  const res = await fetch(GOC + '/models?key=' + encodeURIComponent(CH.key) + '&pageSize=200');
+  if (!res.ok) {
+    let ct = '';
+    try { const j = await res.json(); ct = (j.error && j.error.message) || ''; } catch (e) {}
+    throw new LoiAPI(dichLoi(res.status, ct, 'models'), res.status, ct);
+  }
+  const j = await res.json();
+  return (j.models || [])
+    .filter(m => (m.supportedGenerationMethods || []).includes('generateContent'))
+    .map(m => String(m.name).replace(/^models\//, ''));
+}
+function chonTheoUuTien(co, uuTien, loc) {
+  for (const m of uuTien) if (co.includes(m)) return m;
+  const con = co.filter(loc);
+  return con[0] || '';
+}
+function tuChon() {
+  const co = CH.models;
+  if (!co.length) return;
+  CH.modelText  = chonTheoUuTien(co, UT_TEXT,  m => /flash|pro/.test(m) && !/image|tts|embedding|live|robotics|veo|lyria/.test(m));
+  CH.modelImage = chonTheoUuTien(co, UT_IMAGE, m => /image/.test(m) && !/embedding/.test(m));
+  CH.modelTts   = chonTheoUuTien(co, UT_TTS,   m => /tts/.test(m));
+  luuCH(); veSelectModel();
+}
+function veSelectModel() {
+  const bo = [['#fModelText', 'modelText', m => !/image|tts|embedding|robotics|veo|lyria|live/.test(m)],
+              ['#fModelImage','modelImage', m => /image/.test(m) && !/embedding/.test(m)],
+              ['#fModelTts',  'modelTts',   m => /tts/.test(m)]];
+  for (const [sel, khoa, loc] of bo) {
+    const el = $(sel);
+    const ds = CH.models.filter(loc);
+    if (!ds.length) { el.innerHTML = '<option value="">Không có model phù hợp</option>'; continue; }
+    el.innerHTML = ds.map(m => '<option value="' + esc(m) + '"' + (m === CH[khoa] ? ' selected' : '') + '>' + esc(m) + '</option>').join('');
+  }
+}
+
+/* ---------------- gọi model chữ, tự nhảy khi quá tải ----------------
+   Google hay dồn tải lên model mới nhất. Có lúc 4 trên 5 model chữ cùng trả 503
+   trong khi một model cũ hơn vẫn chạy tốt. Khoá cứng vào một model là chết theo,
+   nên thử lần lượt cho tới khi có model nào trả lời, rồi nhớ luôn model đó. */
+
+/* Nút nào đang chạy thì viết tiến trình vào chính nút đó, để người thấy app
+   đang thử model nào chứ không ngồi nhìn một chữ 'Đang viết...' bất động. */
+let nutBan = null;
+function baoModel(nhan) {
+  return (m, i, tong) => {
+    if (!nutBan || !$(nutBan)) return;
+    $(nutBan).textContent = nhan + (i > 1 ? ' — thử model ' + i + '/' + tong : '') + ': ' + m;
+  };
+}
+
+function dsModelChu() {
+  const co = CH.models || [];
+  const hop = m => !/image|tts|embedding|robotics|veo|lyria|live|aqa|gemma|deep-research|antigravity|computer-use/.test(m);
+  const uu = [CH.modelText].concat(UT_TEXT, co.filter(hop));
+  const ra = [];
+  for (const m of uu) if (m && co.includes(m) && hop(m) && !ra.includes(m)) ra.push(m);
+  if (!ra.length && CH.modelText) ra.push(CH.modelText);
+  return ra.slice(0, 5);           // đủ để né quá tải, không hoá thành rải thảm
+}
+
+function laQuaTai(e) {
+  if (!e || e.status == null) return false;
+  if (e.status === 503 || e.status === 500) return true;
+  // 429 vì hạn mức bằng 0 thì đổi model cùng loại cũng vô ích, để lỗi nổi lên.
+  return e.status === 429 && !/limit: 0/.test(e.raw || '');
+}
+
+async function goiChu(body, moTa) {
+  const ds = dsModelChu();
+  if (!ds.length) throw new LoiAPI('Chưa có model chữ nào. Mở Cài đặt bấm Kiểm tra key.', 0);
+
+  let cuoi = null;
+  for (let i = 0; i < ds.length; i++) {
+    const m = ds[i];
+    const chot = i === ds.length - 1;
+    if (moTa) moTa(m, i + 1, ds.length);
+    try {
+      // Model không phải cuối chỉ thử một nhịp rồi nhảy, để không bắt người ngồi đợi
+      // hết bốn lần lùi của một model đang chết.
+      const j = await goi(m, body, { retry: chot ? 3 : 0 });
+      if (m !== CH.modelText) {
+        const cu = CH.modelText;
+        CH.modelText = m; luuCH(); veSelectModel();
+        toast('info', 'Đã tự đổi model', (cu || 'model cũ') + ' đang quá tải, dùng ' + m + ' thay thế.');
+      }
+      return j;
+    } catch (e) {
+      cuoi = e;
+      if (!laQuaTai(e)) throw e;       // key sai, model bị gỡ... thì đổi model cũng vô ích
+    }
+  }
+  throw new LoiAPI('Đã thử ' + ds.length + ' model chữ, model nào cũng đang quá tải: ' +
+    ds.join(', ') + '. Đây là sự cố phía Google, thường qua sau vài phút. Bấm lại là app thử tiếp.',
+    (cuoi && cuoi.status) || 503, cuoi && cuoi.raw);
+}
+
+/* ---------------- prompt ---------------- */
+/**
+ * BẢN VẼ NHÂN VẬT CỐ ĐỊNH.
+ *
+ * Mỗi cảnh là một lần sinh ảnh độc lập, model không nhớ cảnh trước. Tả chung
+ * chung kiểu "người que đơn giản" thì mỗi lần ra một tỷ lệ, một độ dày nét,
+ * cả loạt nhìn như của năm người vẽ. Cách chữa là đưa một bản vẽ nhân vật với
+ * số đo cụ thể, lặp y nguyên ở mọi cảnh. Con số làm việc, tính từ thì không.
+ */
+const BAN_VE_NGUOI_QUE = [
+  'CHARACTER MODEL SHEET — follow these measurements exactly, they never change:',
+  '- Head: a perfect circle, outline only, empty inside except the face. Head diameter equals 1/6 of the figure total height.',
+  '- Face: two solid black dots for eyes, plus ONE single line for the mouth. Nothing else. No nose, no ears, no eyebrows unless the emotion needs them.',
+  '- Neck: a short straight line joining head to body.',
+  '- Body: ONE straight vertical line. No torso shape, no clothes, no hands, no feet.',
+  '- Arms: two straight lines from the top of the body line. Legs: two straight lines from the bottom.',
+  '- Every line is the SAME thickness, roughly 1/90 of the image width, with rounded ends.',
+  '- Line colour: pure black. Absolutely no grey, no shading, no hatching, no gradient, no drop shadow.',
+  '',
+  'COMPOSITION — identical in every frame:',
+  '- One single stick figure, standing upright, seen straight on, full body inside the frame.',
+  '- The figure occupies about 55% of the frame height and sits in the centre.',
+  '- Keep a wide empty margin all around. Uncluttered.',
+  '- Props: only what the idea needs, drawn in the same flat black line style, never bigger than the figure.',
+  '',
+  'BACKGROUND: one flat solid beige #FDF6E3 filling the whole frame. No border, no frame, no panel,',
+  'no paper texture, no vignette, no gradient, no signature, no watermark.'
+].join('\n');
+
+function promptAnhCanh(hinh, chu, aspect, langKey) {
+  const L = NGON_NGU[langKey];
+  const chuVe = CH.boDauAnh ? boDau(chu) : chu;
+  const khung = aspect === '9:16' ? 'vertical portrait 9:16' : 'horizontal landscape 16:9';
+  return 'A clean minimalist black-line stick figure illustration, in the visual language of the ' +
+    'YouTube channels "Better Than Yesterday" and "Casually Explained".\n\n' +
+    'SCENE: ' + hinh + '\n' +
+    'The face must carry a clear, readable emotion that matches this scene.\n\n' +
+    (chuVe
+      ? 'TEXT: write exactly "' + chuVe + '" once, in bold hand-lettered black block capitals, ' +
+        'placed in the empty space above or below the figure, never overlapping it. ' +
+        (CH.boDauAnh ? '' : L.chuTrongAnh + ' ') + 'Spell it exactly as given, no other words anywhere.\n\n'
+      : 'No text anywhere in the image.\n\n') +
+    BAN_VE_NGUOI_QUE + '\n\n' +
+    'Format: ' + khung + '.';
+}
+/* Cảnh thêm tay thường bỏ trống ô mô tả hình. Lấy tạm lời đọc làm chỗ dựa,
+   còn hơn gửi đi một prompt rỗng rồi nhận về ảnh vô nghĩa. */
+function moTaHinh(s) {
+  const h = (s.hinh || '').trim();
+  if (h) return h;
+  const l = (s.loi || '').trim();
+  return l ? 'a simple visual metaphor for this line: "' + l + '"'
+           : 'a stick figure standing alone, thinking';
+}
+
+/* Bản MỘT DÒNG cho extension Gemini Auto Ảnh.
+   Extension tách danh sách theo dòng, nên prompt tuyệt đối không được xuống dòng.
+   Câu lệnh viết đủ ý ngay trong dòng để người dùng bỏ trống ô Khuôn prompt và ô
+   Câu thêm vào cuối, tránh câu style ảnh chụp mặc định phá mất nét người que. */
+function promptAnhMotDong(hinh, chu, aspect, langKey) {
+  const L = NGON_NGU[langKey];
+  const chuVe = CH.boDauAnh ? boDau(chu) : chu;
+  const khung = aspect === '9:16' ? 'vertical portrait 9:16' : 'horizontal landscape 16:9';
+  // Cùng bản vẽ nhân vật với đường API, chỉ ép về một dòng vì extension tách
+  // danh sách theo dòng. Gạch đầu dòng đổi thành dấu chấm phẩy cho liền mạch.
+  const banVe = BAN_VE_NGUOI_QUE
+    .replace(/\n+/g, ' ').replace(/\s*-\s+/g, '; ').replace(/\s{2,}/g, ' ');
+  const cau = 'Tạo ảnh: a clean minimalist black-line stick figure illustration in the visual language of ' +
+    'the YouTube channel "Better Than Yesterday". Scene: ' + hinh + '. ' +
+    'The face must carry a clear readable emotion matching this scene. ' +
+    (chuVe
+      ? 'Write exactly "' + chuVe + '" once, in bold hand-lettered black block capitals, placed in the ' +
+        'empty space above or below the figure, never overlapping it. ' +
+        (CH.boDauAnh ? '' : L.chuTrongAnh + ' ') + 'No other words anywhere. '
+      : 'No text anywhere in the image. ') +
+    banVe + ' ' +
+    'Format: ' + khung + '. Tỉ lệ khung hình ' + aspect + '.';
+  return cau.replace(/\s*\n+\s*/g, ' ').replace(/\s{2,}/g, ' ').trim();
+}
+
+function danhSachPromptExtension() {
+  const d = [
+    '# Danh sách prompt cho extension Gemini Auto Ảnh',
+    '# Dự án: ' + (DA.title || DA.topic),
+    '# Khung hình: ' + DA.aspect + '   Số cảnh: ' + DA.scenes.length,
+    '# ',
+    '# Trong popup extension nhớ đặt:',
+    '#   Khuôn prompt          -> để TRỐNG',
+    '#   Câu thêm vào cuối     -> để TRỐNG',
+    '#   Tiền tố tên file      -> canh',
+    '#   Thư mục lưu           -> nguoi-que',
+    '#   Kích thước ảnh        -> ' + DA.aspect,
+    '# ',
+    '# Mỗi dòng dưới đây là một cảnh, đúng theo thứ tự trong app.'
+  ];
+  DA.scenes.forEach(s => d.push(promptAnhMotDong(moTaHinh(s), s.chu, DA.aspect, DA.lang)));
+  return d.join('\n');
+}
+
+/* Tên file extension đặt ra: <thư mục>/<tiền tố>-<NNN>-<tóm tắt>-<k>.png
+   NNN là số thứ tự prompt bắt đầu từ 001, k là ảnh thứ mấy của cùng prompt.
+   Ghép theo NNN. Không đọc được NNN thì xếp theo tên rồi rải lần lượt. */
+function ghepAnhTheoTen(files) {
+  const anh = Array.from(files).filter(f => /^image\//.test(f.type) || /\.(png|jpe?g|webp)$/i.test(f.name));
+  if (!anh.length) return { gan: 0, bo: 0, cach: '' };
+
+  const theoSo = new Map();
+  const khongSo = [];
+  for (const f of anh) {
+    const ten = f.name.replace(/\.[^.]+$/, '');
+    const m = ten.match(/(?:^|[^0-9])(\d{3})(?:[^0-9]|$)/);
+    const k = (ten.match(/-(\d+)$/) || [, '1'])[1];
+    if (m) {
+      const i = parseInt(m[1], 10) - 1;
+      const cu = theoSo.get(i);
+      if (!cu || parseInt(k, 10) < cu.k) theoSo.set(i, { f, k: parseInt(k, 10) });
+    } else khongSo.push(f);
+  }
+
+  let gan = 0, bo = 0;
+  if (theoSo.size) {
+    for (const [i, v] of theoSo) {
+      if (i >= 0 && i < DA.scenes.length) { DA.scenes[i].anh = v.f; gan++; } else bo++;
+    }
+    return { gan, bo, cach: 'theo số thứ tự trong tên file' };
+  }
+
+  khongSo.sort((a, b) => a.name.localeCompare(b.name, 'vi', { numeric: true }));
+  khongSo.forEach((f, i) => { if (i < DA.scenes.length) { DA.scenes[i].anh = f; gan++; } else bo++; });
+  return { gan, bo, cach: 'xếp theo tên file vì không thấy số thứ tự' };
+}
+
+function promptThumb(title, y, aspect) {
+  return 'YouTube thumbnail illustration for a video titled: "' + title + '".\n' +
+    'SUBJECT: a highly expressive classic STICK FIGURE interacting with: ' + (y || 'the main idea of the title') + '\n\n' +
+    'STYLE RULES:\n' +
+    '1. Classic stickman: perfect circle head, simple stick limbs.\n' +
+    '2. Very expressive face (shocked, thinking, delighted).\n' +
+    '3. Clean smooth black lines only.\n' +
+    '4. Background: flat off-white beige #FDF6E3.\n' +
+    '5. No text anywhere in the image.\n\n' +
+    'Format: ' + (aspect === '9:16' ? 'vertical portrait 9:16' : 'horizontal landscape 16:9') + '. Minimalist, high contrast.';
+}
+
+/* ---------------- sinh nội dung ---------------- */
+async function taoTieuDe(them) {
+  const L = NGON_NGU[DA.lang];
+  const p = 'Bạn là ' + L.vaiTro + '.\n' +
+    'Viết 5 tiêu đề video ' + L.ten + ' cho chủ đề: "' + DA.topic + '".\n' +
+    'Giọng: ' + TONE[DA.tone] + '.\n' +
+    'Bám một trong ba công thức:\n' + L.congThuc + '\n' +
+    (them && them.length ? 'Tránh trùng ý với: ' + them.join(' | ') + '\n' : '') +
+    'Viết hoa các từ mang sức nặng. Trả về DUY NHẤT một mảng JSON gồm 5 chuỗi.';
+  const j = await goiChu({
+    contents: [{ parts: [{ text: p }] }],
+    generationConfig: { responseMimeType: 'application/json', responseSchema: { type: 'ARRAY', items: { type: 'STRING' } } }
+  }, baoModel('Đang nghĩ tiêu đề'));
+  const ds = jsonTuChu(layChu(j));
+  if (!Array.isArray(ds) || !ds.length) throw new LoiAPI('Model trả về rỗng. Thử lại hoặc đổi model chữ.', 0);
+  return ds.map(String);
+}
+
+async function taoKichBan() {
+  const L = NGON_NGU[DA.lang];
+  const soCanh = Math.max(4, Math.min(80, Math.round(DA.duration / DA.secPerScene)));
+  const chuMoiCanh = Math.max(4, Math.round(DA.secPerScene * 2.6));  // ~2.6 chữ/giây khi đọc
+  const p = 'Bạn là người viết kịch bản video ngắn bằng ' + L.ten + '.\n' +
+    'Tiêu đề: "' + DA.title + '"\n' +
+    'Chủ đề gốc: "' + DA.topic + '"\n' +
+    'Giọng: ' + TONE[DA.tone] + '. ' + L.giongVan + '\n\n' +
+    'YÊU CẦU NHỊP:\n' +
+    '- Chia thành ĐÚNG ' + soCanh + ' cảnh.\n' +
+    '- Mỗi cảnh khoảng ' + chuMoiCanh + ' chữ lời đọc, tương ứng ' + DA.secPerScene + ' giây.\n' +
+    '- Câu ngắn, từ thông dụng, không sáo rỗng.\n\n' +
+    'CẤU TRÚC:\n' +
+    '- Cảnh 1-3 là móc câu: một khẳng định gây tò mò, một cú lật, rồi bắc cầu sang phần giải.\n' +
+    '- Thân bài: bóc từng bước, mỗi cảnh một ý.\n' +
+    '- Cảnh cuối: một câu chốt đáng nhớ.\n\n' +
+    'MỖI CẢNH TRẢ VỀ:\n' +
+    '- "loi": lời đọc bằng ' + L.ten + ', ngắn.\n' +
+    '- "hinh": mô tả BẰNG TIẾNG ANH một ẩn dụ hình đơn giản cho người que vẽ được.\n' +
+    '- "chu": 1 tới 3 chữ sẽ viết trong ảnh, bằng ' + L.ten + '.\n\n' +
+    'Trả về DUY NHẤT một mảng JSON.';
+  const j = await goiChu({
+    contents: [{ parts: [{ text: p }] }],
+    generationConfig: {
+      responseMimeType: 'application/json',
+      responseSchema: {
+        type: 'ARRAY',
+        items: { type: 'OBJECT',
+          properties: { loi: { type: 'STRING' }, hinh: { type: 'STRING' }, chu: { type: 'STRING' } },
+          required: ['loi', 'hinh', 'chu'] }
+      }
+    }
+  }, baoModel('Đang viết kịch bản'));
+  const ds = jsonTuChu(layChu(j));
+  if (!Array.isArray(ds) || !ds.length) throw new LoiAPI('Model không trả về cảnh nào. Thử lại hoặc đổi model chữ.', 0);
+  return ds.map(x => ({ id: uid(), loi: String(x.loi || ''), hinh: String(x.hinh || ''), chu: String(x.chu || ''),
+                        anh: null, pcm: null, giay: 0 }));
+}
+
+async function vietLai(che) {
+  const L = NGON_NGU[DA.lang];
+  const toanBo = DA.scenes.map((s, i) => (i + 1) + '. ' + s.loi).join('\n');
+  const p = 'Bạn là biên tập kịch bản video ' + L.ten + '.\n' +
+    'Viết lại các dòng dưới cho ' + (che === 'ngan' ? 'CÔ ĐỌNG hơn, bớt khoảng 20% chữ' : 'CHI TIẾT hơn khoảng 20%, thêm sức nặng cảm xúc') + '.\n' +
+    'Giữ nguyên số dòng, giữ nguyên thứ tự, giữ nguyên ý.\n' +
+    'Trả về DUY NHẤT một mảng JSON gồm các chuỗi, mỗi chuỗi là một dòng đã viết lại.\n\n' + toanBo;
+  const j = await goiChu({
+    contents: [{ parts: [{ text: p }] }],
+    generationConfig: { responseMimeType: 'application/json', responseSchema: { type: 'ARRAY', items: { type: 'STRING' } } }
+  }, baoModel('Đang viết lại'));
+  const ds = jsonTuChu(layChu(j));
+  if (!Array.isArray(ds)) throw new LoiAPI('Không đọc được kết quả viết lại.', 0);
+  ds.forEach((t, i) => { if (DA.scenes[i]) DA.scenes[i].loi = String(t).replace(/^\d+[.)]\s*/, ''); });
+}
+
+/* Model ảnh: mỗi model nhận cấu hình hơi khác nhau, nên thử ba nấc. */
+async function veAnh(prompt, aspect) {
+  const canThu = [
+    { generationConfig: { imageConfig: { aspectRatio: aspect, imageSize: '1K' } } },
+    { generationConfig: { responseModalities: ['IMAGE'], imageConfig: { aspectRatio: aspect } } },
+    { generationConfig: {} }
+  ];
+  let cuoi = null;
+  for (const them of canThu) {
+    try {
+      const j = await goi(CH.modelImage, Object.assign({ contents: [{ parts: [{ text: prompt }] }] }, them), { huyDuoc: true });
+      const d = layAnh(j);
+      if (d) return new Blob([b64ToBytes(d.data)], { type: d.mimeType || 'image/png' });
+      cuoi = new LoiAPI('Model trả lời nhưng không kèm ảnh. Thường do prompt bị chặn nội dung.', 0);
+    } catch (e) {
+      cuoi = e;
+      if (e.status !== 400) throw e;   // chỉ 400 mới đáng thử cấu hình khác
+    }
+  }
+  throw cuoi || new LoiAPI('Không vẽ được ảnh.', 0);
+}
+
+const VUNG_MIEN = {
+  '':    '',
+  'bac': 'Đọc bằng giọng miền Bắc Việt Nam, phát âm chuẩn Hà Nội',
+  'nam': 'Đọc bằng giọng miền Nam Việt Nam, phát âm chuẩn Sài Gòn'
+};
+
+/**
+ * Mỗi cảnh là một lần gọi riêng, model không nhớ cảnh trước, nên nó tự chọn
+ * vùng miền mỗi lần. Cảnh này Bắc, cảnh kia Nam, nghe như hai người đọc. Chốt
+ * cứng bằng một câu chỉ dẫn đặt trước lời đọc. Đã kiểm: model coi đó là chỉ dẫn
+ * và làm theo, không đọc câu đó thành tiếng.
+ */
+function loiChiDan() {
+  const p = [];
+  const v = VUNG_MIEN[CH.vungMien || ''];
+  if (v) p.push(v);
+  if (CH.speed) p.push(String(CH.speed).replace(/[:\s]+$/, ''));
+  if (!p.length) return '';
+  // Ghép thành MỘT câu liền mạch. Để nguyên chữ hoa giữa câu thì chỉ dẫn đọc
+  // như hai câu rời, model dễ hiểu nhầm là lời cần đọc thành tiếng.
+  const cau = p.map((t, i) => i === 0 ? t : t.charAt(0).toLowerCase() + t.slice(1)).join(', ');
+  return cau + ': ';
+}
+
+async function docLoi(text) {
+  const loiDoc = loiChiDan() + text;
+  const j = await goi(CH.modelTts, {
+    contents: [{ parts: [{ text: loiDoc }] }],
+    generationConfig: {
+      responseModalities: ['AUDIO'],
+      speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: CH.voice } } }
+    }
+  }, { huyDuoc: true });
+  const d = layAnh(j);
+  if (!d) throw new LoiAPI('Không nhận được âm thanh.', 0);
+  return b64ToBytes(d.data);          // PCM 16-bit, 24000Hz, 1 kênh
+}
+
+/* ---------------- WAV ---------------- */
+const SR = 24000;
+function wavTuPcm(pcm) {
+  const n = pcm.length, buf = new ArrayBuffer(44 + n), v = new DataView(buf);
+  const s = (o, t) => { for (let i = 0; i < t.length; i++) v.setUint8(o + i, t.charCodeAt(i)); };
+  s(0, 'RIFF'); v.setUint32(4, 36 + n, true); s(8, 'WAVE'); s(12, 'fmt ');
+  v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+  v.setUint32(24, SR, true); v.setUint32(28, SR * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+  s(36, 'data'); v.setUint32(40, n, true);
+  new Uint8Array(buf, 44).set(pcm);
+  return new Uint8Array(buf);
+}
+const giayPcm = pcm => pcm ? pcm.length / (SR * 2) : 0;
+/* Bản ghép cũ đã bỏ. Nó chỉ nối các cảnh CÓ tiếng nên lệch với dòng thời gian
+   của phụ đề khi có cảnh chưa đọc. Dùng pcmTheoMoc ở dưới. */
+
+/**
+ * Ghép tiếng THEO ĐÚNG dòng thời gian của phụ đề.
+ *
+ * Khác gopPcm ở chỗ quan trọng: gopPcm chỉ nối các cảnh CÓ tiếng, còn mocThoiGian
+ * vẫn dành chỗ cho cảnh chưa đọc bằng thời lượng ước tính. Cảnh nào thiếu tiếng là
+ * hai bên lệch nhau, phụ đề trôi dần khỏi hình. Hàm này đặt tiếng của từng cảnh vào
+ * đúng mốc của nó, chỗ trống để im lặng, nên tiếng, hình và phụ đề dùng chung một
+ * thước đo.
+ */
+function pcmTheoMoc() {
+  const moc = mocThoiGian();
+  if (!moc.length) return new Uint8Array(0);
+  const tong = moc[moc.length - 1].den;
+  let n = Math.round(tong * SR * 2);
+  if (n % 2) n++;                                   // giữ ranh giới mẫu 16-bit
+  const ra = new Uint8Array(n);
+  DA.scenes.forEach((s, i) => {
+    if (!s.pcm) return;
+    let o = Math.round(moc[i].tu * SR * 2);
+    if (o % 2) o++;
+    ra.set(s.pcm.subarray(0, Math.max(0, n - o)), o);
+  });
+  return ra;
+}
+
+/* ---------------- phụ đề + bảng dựng ---------------- */
+function mocThoiGian() {
+  const nghi = 0.25, moc = [];
+  let t = 0;
+  for (const s of DA.scenes) {
+    const d = s.pcm ? giayPcm(s.pcm) : Math.max(1, demChu(s.loi) / 2.6);
+    moc.push({ tu: t, den: t + d, giay: d });
+    t += d + nghi;
+  }
+  return moc;
+}
+function ts(sec) {
+  const ms = Math.round(sec * 1000);
+  const h = Math.floor(ms / 3600000), m = Math.floor(ms % 3600000 / 60000);
+  const s = Math.floor(ms % 60000 / 1000), r = ms % 1000;
+  return pad2(h) + ':' + pad2(m) + ':' + pad2(s) + ',' + String(r).padStart(3, '0');
+}
+function taoSrt() {
+  const moc = mocThoiGian();
+  return DA.scenes.map((s, i) =>
+    (i + 1) + '\n' + ts(moc[i].tu) + ' --> ' + ts(moc[i].den) + '\n' + s.loi.trim() + '\n').join('\n');
+}
+/**
+ * Bọc một ô CSV.
+ * Excel coi ô bắt đầu bằng = + - @ là công thức và chạy nó. Lời đọc bắt đầu
+ * bằng dấu trừ là chuyện thường, nên chèn thêm dấu nháy đơn ở đầu để Excel
+ * đọc như chữ. Chữ hiện ra vẫn nguyên vẹn.
+ */
+function oCsv(v) {
+  let t = String(v == null ? '' : v);
+  if (/^[=+\-@\t\r]/.test(t)) t = "'" + t;
+  return '"' + t.replace(/"/g, '""') + '"';
+}
+function taoCsv() {
+  const moc = mocThoiGian();
+  const dong = [['Canh','Bat dau (s)','Ket thuc (s)','Thoi luong (s)','Loi doc','Chu tren anh','Mo ta hinh','File anh','File audio']];
+  DA.scenes.forEach((s, i) => dong.push([
+    i + 1, moc[i].tu.toFixed(2), moc[i].den.toFixed(2), moc[i].giay.toFixed(2),
+    s.loi, s.chu, s.hinh,
+    s.anh ? 'anh/canh-' + pad2(i + 1) + '.png' : '',
+    s.pcm ? 'audio/canh-' + pad2(i + 1) + '.wav' : ''
+  ]));
+  return '\uFEFF' + dong.map(r => r.map(oCsv).join(',')).join('\r\n');
+}
+function taoTxt() {
+  const moc = mocThoiGian();
+  let t = 'TIÊU ĐỀ: ' + DA.title + '\nCHỦ ĐỀ: ' + DA.topic + '\n';
+  t += 'KHUNG HÌNH: ' + DA.aspect + '   SỐ CẢNH: ' + DA.scenes.length + '\n';
+  t += 'TỔNG THỜI LƯỢNG ƯỚC TÍNH: ' + (moc.length ? moc[moc.length - 1].den.toFixed(1) : 0) + ' giây\n';
+  t += '='.repeat(60) + '\n\n';
+  DA.scenes.forEach((s, i) => {
+    t += 'CẢNH ' + pad2(i + 1) + '  [' + moc[i].tu.toFixed(1) + 's → ' + moc[i].den.toFixed(1) + 's]\n';
+    t += 'Lời đọc : ' + s.loi + '\n';
+    t += 'Chữ ảnh : ' + s.chu + '\n';
+    t += 'Mô tả   : ' + s.hinh + '\n\n';
+  });
+  t += '='.repeat(60) + '\nLỜI ĐỌC LIỀN MẠCH:\n\n' + DA.scenes.map(s => s.loi).join(' ') + '\n';
+  return t;
+}
+
+/* ---------------- dựng video bằng ffmpeg ----------------
+   Gói ZIP là nguyên liệu. Hai file dưới biến nó thành video mà không cần
+   mở phần mềm dựng nào: một danh sách ảnh kèm thời lượng, một file .bat. */
+
+const KHUNG = { '9:16': [1080, 1920], '16:9': [1920, 1080] };
+
+/** Ảnh nào thiếu thì giữ ảnh trước đó trên màn hình, không để thủng khung. */
+function anhChoCanh() {
+  const ra = [];
+  let cuoi = null, thay = 0;
+  DA.scenes.forEach((s, i) => {
+    if (s.anh) { cuoi = 'anh/canh-' + pad2(i + 1) + '.png'; ra.push(cuoi); }
+    else if (cuoi) { ra.push(cuoi); thay++; }
+    else ra.push(null);
+  });
+  return { ra, thay };
+}
+
+/**
+ * Danh sách cho bộ concat của ffmpeg.
+ * Thời lượng mỗi ảnh tính tới lúc ảnh kế bắt đầu, tức ĐÃ gồm khoảng lặng 0,25
+ * giây giữa hai cảnh. Nhờ vậy ảnh khớp đúng với ca-bai.wav và với phụ đề.
+ */
+function taoDanhSachAnh() {
+  const moc = mocThoiGian();
+  const { ra } = anhChoCanh();
+  const dong = ['ffconcat version 1.0'];
+  let cuoiCung = null;
+  DA.scenes.forEach((s, i) => {
+    if (!ra[i]) return;
+    const giay = i < DA.scenes.length - 1 ? (moc[i + 1].tu - moc[i].tu) : moc[i].giay;
+    dong.push("file '" + ra[i] + "'");
+    dong.push('duration ' + giay.toFixed(3));
+    cuoiCung = ra[i];
+  });
+  // Bộ concat bỏ qua duration của mục cuối, phải lặp lại tên file thì khung
+  // hình cuối mới đứng đủ lâu thay vì vụt qua.
+  if (cuoiCung) dong.push("file '" + cuoiCung + "'");
+  return dong.join('\n') + '\n';
+}
+
+function taoBatDungVideo(chenPhuDe) {
+  const [w, h] = KHUNG[DA.aspect] || KHUNG['9:16'];
+  const coAudio = DA.scenes.some(s => s.pcm);
+  const { thay } = anhChoCanh();
+  const moc = mocThoiGian();
+  const tong = moc.length ? moc[moc.length - 1].den : 0;
+
+  const loc = [
+    'scale=' + w + ':' + h + ':force_original_aspect_ratio=decrease',
+    'pad=' + w + ':' + h + ':(ow-iw)/2:(oh-ih)/2:color=0xFDF6E3',
+    'fps=30'
+  ];
+  // Đường dẫn để tương đối vì file .bat đã cd vào đúng thư mục. Ghi đường dẫn
+  // tuyệt đối trên Windows thì dấu hai chấm của ổ đĩa làm vỡ cú pháp bộ lọc.
+  if (chenPhuDe) {
+    // ffmpeg đổi .srt sang .ass với khổ chuẩn 288px rồi mới phóng lên chiều cao
+    // thật, nên FontSize KHÔNG phải pixel. Quy ngược: px = FontSize * (h / 288).
+    const px = DA.aspect === '9:16' ? 64 : 46;      // cỡ chữ mong muốn, tính bằng pixel
+    const co = Math.max(6, Math.round(px * 288 / h));
+    const le = Math.round((DA.aspect === '9:16' ? 200 : 80) * 288 / h);
+    // Ảnh người que luôn là nét đen trên nền kem, nên chữ đen viền trắng mới
+    // thuận tông. Chữ trắng đặt lên nền kem là ngược sáng, đọc mỏi mắt.
+    // BorderStyle=3 vẽ hộp đặc sau chữ. Không có nó thì phụ đề đè lên chữ đã
+    // vẽ sẵn trong ảnh, hai lớp chồng nhau không đọc ra.
+    loc.push("subtitles=phu-de.srt:force_style='FontName=Arial,Bold=1,FontSize=" + co +
+      ",PrimaryColour=&H001A1A1A,BackColour=&H00EFF4F7,BorderStyle=3,Outline=8,Shadow=0,MarginV=" + le + "'");
+  }
+  loc.push('format=yuv420p');
+
+  const L = [];
+  L.push('@echo off');
+  L.push('chcp 65001 >nul');
+  L.push('title Dung video NGUOI QUE');
+  L.push('cd /d "%~dp0"');
+  L.push('echo.');
+  L.push('echo  ==========================================');
+  L.push('echo    Dung video tu bo anh va giong doc');
+  L.push('echo    Khung hinh : ' + DA.aspect + '  (' + w + 'x' + h + ')');
+  L.push('echo    So canh    : ' + DA.scenes.length);
+  L.push('echo    Do dai     : ' + tong.toFixed(1) + ' giay');
+  L.push('echo  ==========================================');
+  L.push('echo.');
+  if (thay) {
+    L.push('echo  Luu y: ' + thay + ' canh chua co anh rieng, giu tam anh cua canh truoc.');
+    L.push('echo.');
+  }
+  L.push('where ffmpeg >nul 2>nul');
+  L.push('if errorlevel 1 (');
+  L.push('  echo  Chua cai ffmpeg tren may nay.');
+  L.push('  echo  Mo PowerShell va chay:  winget install Gyan.FFmpeg');
+  L.push('  echo  Cai xong mo lai cua so nay.');
+  L.push('  echo.');
+  L.push('  pause');
+  L.push('  exit /b 1');
+  L.push(')');
+  L.push('');
+  L.push('echo  Dang dung, cho mot lat...');
+  L.push('echo.');
+
+  const vao = '-f concat -safe 0 -i danh-sach-anh.txt' + (coAudio ? ' -i audio/ca-bai.wav' : '');
+  const raAudio = coAudio ? ' -c:a aac -b:a 192k -shortest' : ' -an';
+  L.push('ffmpeg -y -hide_banner ' + vao +
+    ' -vf "' + loc.join(',') + '"' +
+    ' -c:v libx264 -preset medium -crf 20 -pix_fmt yuv420p -r 30' + raAudio +
+    ' video.mp4');
+  L.push('');
+  L.push('if errorlevel 1 (');
+  L.push('  echo.');
+  L.push('  echo  Dung that bai. Doc dong bao loi mau do o tren.');
+  L.push('  pause');
+  L.push('  exit /b 1');
+  L.push(')');
+  L.push('echo.');
+  L.push('echo  XONG. File video.mp4 nam ngay trong thu muc nay.');
+  L.push('echo.');
+  L.push('start "" video.mp4');
+  L.push('pause');
+  return L.join('\r\n') + '\r\n';
+}
+
+/* ================================================================
+   DỰNG VIDEO NGAY TRONG TRÌNH DUYỆT
+   Vẽ từng khung lên canvas, phát tiếng qua Web Audio, MediaRecorder
+   quay lại cả hai. Không cần ffmpeg, không cần chạy file nào.
+   ================================================================ */
+
+const UT_MIME = [
+  'video/mp4;codecs=avc1.42E01E,mp4a.40.2',   // MP4 thật, Chrome 130 trở lên
+  'video/mp4',
+  'video/webm;codecs=vp9,opus',
+  'video/webm'
+];
+function chonMime() {
+  if (typeof MediaRecorder === 'undefined') return null;
+  for (const m of UT_MIME) if (MediaRecorder.isTypeSupported(m)) return m;
+  return null;
+}
+const duoiTuMime = m => (m || '').indexOf('mp4') >= 0 ? 'mp4' : 'webm';
+
+/** Vẽ một ảnh lọt vào ô chữ nhật cho trước, giữ đúng tỷ lệ. */
+function veBmLot(ctx, bm, x, y, w, hh) {
+  if (!bm) return;
+  const ti = Math.min(w / bm.width, hh / bm.height);
+  const rw = bm.width * ti, rh = bm.height * ti;
+  ctx.drawImage(bm, x + (w - rw) / 2, y + (hh - rh) / 2, rw, rh);
+}
+
+/** Vẽ ảnh lọt khung, phần thừa tô nền kem như nền tranh. */
+function veAnhLotKhung(ctx, bm, w, h, caoVungAnh) {
+  ctx.fillStyle = '#FDF6E3';
+  ctx.fillRect(0, 0, w, h);
+  veBmLot(ctx, bm, 0, 0, w, caoVungAnh || h);
+}
+
+const CHUYEN_CANH = {
+  cat:   'Cắt thẳng, không hiệu ứng',
+  mo:    'Mờ dần sang cảnh sau',
+  truot: 'Trượt ngang',
+  xoa:   'Xoá ngang như lật trang',
+  nhay:  'Nháy trắng một nhịp'
+};
+
+/**
+ * Vẽ một khung ở giữa hai cảnh, tien chạy từ 0 tới 1.
+ * Chỉ đổi phần hình. Dải phụ đề do người gọi vẽ đè lên sau, nên nó đứng yên.
+ */
+function veChuyenCanh(ctx, bmA, bmB, w, caoAnh, tien, kieu) {
+  const t = Math.max(0, Math.min(1, tien));
+  ctx.save();
+  ctx.fillStyle = '#FDF6E3';
+  ctx.fillRect(0, 0, w, caoAnh);
+
+  if (kieu === 'truot') {
+    veBmLot(ctx, bmA, -w * t, 0, w, caoAnh);
+    veBmLot(ctx, bmB, w * (1 - t), 0, w, caoAnh);
+  } else if (kieu === 'xoa') {
+    veBmLot(ctx, bmA, 0, 0, w, caoAnh);
+    ctx.beginPath(); ctx.rect(0, 0, w * t, caoAnh); ctx.clip();
+    ctx.fillStyle = '#FDF6E3'; ctx.fillRect(0, 0, w * t, caoAnh);
+    veBmLot(ctx, bmB, 0, 0, w, caoAnh);
+    ctx.restore(); ctx.save();
+    // vạch mực chạy theo mép xoá, đúng chất nét vẽ tay
+    ctx.fillStyle = '#1A1A1A';
+    ctx.fillRect(Math.max(0, w * t - 5), 0, 5, caoAnh);
+  } else if (kieu === 'nhay') {
+    // nửa đầu loé trắng, nửa sau hiện cảnh mới
+    if (t < 0.5) { veBmLot(ctx, bmA, 0, 0, w, caoAnh); ctx.globalAlpha = t * 2; }
+    else { veBmLot(ctx, bmB, 0, 0, w, caoAnh); ctx.globalAlpha = (1 - t) * 2; }
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(0, 0, w, caoAnh);
+  } else {                                   // mờ dần
+    veBmLot(ctx, bmA, 0, 0, w, caoAnh);
+    ctx.globalAlpha = t;
+    veBmLot(ctx, bmB, 0, 0, w, caoAnh);
+  }
+  ctx.restore();
+}
+
+/* ---------------- tiếng động chuyển cảnh ---------------- */
+const TIENG_DONG = {
+  khong: 'Không có',
+  pop:   'Tách nhẹ',
+  vut:   'Vút qua',
+  go:    'Gõ bút'
+};
+let boNhieu = null;
+function layNhieu(ac) {
+  if (boNhieu) return boNhieu;
+  const n = Math.floor(ac.sampleRate * 0.4);
+  boNhieu = ac.createBuffer(1, n, ac.sampleRate);
+  const d = boNhieu.getChannelData(0);
+  for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+  return boNhieu;
+}
+
+/**
+ * Tiếng động dựng thẳng bằng Web Audio, không tải file nào.
+ * Giữ app tự chứa và không phụ thuộc mạng.
+ */
+function keuTiengDong(ac, dich, luc, kieu, to) {
+  if (!kieu || kieu === 'khong') return;
+  const g = ac.createGain();
+  g.connect(dich);
+  g.connect(ac.destination);
+  const V = Math.max(0, Math.min(1, to == null ? 0.35 : to));
+
+  if (kieu === 'pop') {
+    const o = ac.createOscillator();
+    o.type = 'sine';
+    o.frequency.setValueAtTime(760, luc);
+    o.frequency.exponentialRampToValueAtTime(180, luc + 0.10);
+    g.gain.setValueAtTime(0.0001, luc);
+    g.gain.exponentialRampToValueAtTime(V, luc + 0.006);
+    g.gain.exponentialRampToValueAtTime(0.0001, luc + 0.13);
+    o.connect(g); o.start(luc); o.stop(luc + 0.15);
+    return;
+  }
+  if (kieu === 'go') {
+    const s = ac.createBufferSource();
+    s.buffer = layNhieu(ac);
+    const f = ac.createBiquadFilter();
+    f.type = 'highpass'; f.frequency.value = 2600;
+    g.gain.setValueAtTime(0.0001, luc);
+    g.gain.exponentialRampToValueAtTime(V * 0.8, luc + 0.003);
+    g.gain.exponentialRampToValueAtTime(0.0001, luc + 0.05);
+    s.connect(f); f.connect(g); s.start(luc); s.stop(luc + 0.06);
+    return;
+  }
+  // Vút qua: nhiễu quét qua bộ lọc dải. Lọc dải ăn mất phần lớn năng lượng nên
+  // phải bù hệ số lớn, không thì tiếng chìm nghỉm dưới lời đọc.
+  const s = ac.createBufferSource();
+  s.buffer = layNhieu(ac);
+  const f = ac.createBiquadFilter();
+  f.type = 'bandpass'; f.Q.value = 0.6;
+  f.frequency.setValueAtTime(320, luc);
+  f.frequency.exponentialRampToValueAtTime(3200, luc + 0.22);
+  g.gain.setValueAtTime(0.0001, luc);
+  g.gain.exponentialRampToValueAtTime(V * 3.6, luc + 0.06);
+  g.gain.exponentialRampToValueAtTime(0.0001, luc + 0.26);
+  s.connect(f); f.connect(g); s.start(luc); s.stop(luc + 0.28);
+}
+
+const coChuPhuDe = aspect => aspect === '9:16' ? 64 : 46;
+
+/** Ngắt dòng rồi cân dòng, dùng chung cho lúc vẽ và lúc đo chiều cao dải. */
+function ngatDongPhuDe(ctx, chu, w, co) {
+  ctx.font = '700 ' + co + 'px Inter, system-ui, sans-serif';
+  const rong = w * 0.86;
+  const tu = String(chu || '').trim().split(/\s+/).filter(Boolean);
+  if (!tu.length) return [];
+  const ngat = (max) => {
+    const ra = []; let d = '';
+    for (const t of tu) {
+      const thu = d ? d + ' ' + t : t;
+      if (ctx.measureText(thu).width > max && d) { ra.push(d); d = t; }
+      else d = thu;
+    }
+    if (d) ra.push(d);
+    return ra;
+  };
+  let dong = ngat(rong);
+  // Cân dòng: bó hẹp dần bề ngang chừng nào chưa phải thêm dòng mới. Nhờ vậy
+  // không còn cảnh dòng cuối trơ trọi một chữ.
+  if (dong.length > 1) {
+    let lo = w * 0.3, hi = rong;
+    for (let k = 0; k < 8; k++) {
+      const giua = (lo + hi) / 2;
+      if (ngat(giua).length <= dong.length) hi = giua; else lo = giua;
+    }
+    dong = ngat(hi);
+  }
+  return dong;
+}
+
+/**
+ * Chiều cao dải phụ đề, đo theo câu DÀI NHẤT của cả bài rồi giữ nguyên suốt
+ * video. Để dải co giãn theo từng cảnh thì hình sẽ nhảy lên nhảy xuống.
+ */
+function caoDaiPhuDe(ctx, w, aspect) {
+  const co = coChuPhuDe(aspect);
+  let nhieuNhat = 1;
+  for (const s of DA.scenes) nhieuNhat = Math.max(nhieuNhat, ngatDongPhuDe(ctx, s.loi, w, co).length);
+  return Math.round(nhieuNhat * co * 1.25 + co * 1.1);
+}
+
+/**
+ * Phụ đề. Hai kiểu:
+ *   'dai' — chừa hẳn một dải kem ở đáy, hình co lên trên. KHÔNG BAO GIỜ đè lên
+ *           chữ đã vẽ sẵn trong ảnh. Đây là mặc định.
+ *   'de'  — đè lên hình, chữ đen viền trắng. Gọn hơn nhưng cảnh nào ảnh có chữ
+ *           ở đáy thì hai lớp chữ chồng nhau, đọc không ra.
+ */
+function vePhuDe(ctx, chu, w, h, aspect, kieu, daiCao) {
+  const co = coChuPhuDe(aspect);
+  const dong = ngatDongPhuDe(ctx, chu, w, co);
+  if (!dong.length) return;
+
+  ctx.font = '700 ' + co + 'px Inter, system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'alphabetic';
+  ctx.lineJoin = 'round';
+  const cao = co * 1.25;
+
+  if (kieu === 'dai') {
+    const dinh = h - daiCao;
+    ctx.fillStyle = '#F7F4EF';
+    ctx.fillRect(0, dinh, w, daiCao);
+    ctx.fillStyle = '#1A1A1A';
+    ctx.fillRect(0, dinh, w, 5);                       // gạch phân cách kiểu NB
+    let y = dinh + (daiCao - dong.length * cao) / 2 + co;
+    for (const l of dong) { ctx.fillText(l, w / 2, y); y += cao; }
+    return;
+  }
+
+  const leDay = aspect === '9:16' ? 200 : 80;
+  let y = h - leDay - (dong.length - 1) * cao;
+  for (const l of dong) {
+    ctx.lineWidth = co * 0.22;
+    ctx.strokeStyle = '#FFFFFF';
+    ctx.strokeText(l, w / 2, y);
+    ctx.fillStyle = '#1A1A1A';
+    ctx.fillText(l, w / 2, y);
+    y += cao;
+  }
+}
+
+function pcmSangAudioBuffer(ac, pcm) {
+  const mau = Math.floor(pcm.length / 2);
+  const buf = ac.createBuffer(1, Math.max(1, mau), SR);
+  const ra = buf.getChannelData(0);
+  const dv = new DataView(pcm.buffer, pcm.byteOffset, pcm.byteLength);
+  for (let i = 0; i < mau; i++) ra[i] = dv.getInt16(i * 2, true) / 32768;
+  return buf;
+}
+
+let dungVideoHuy = false;
+
+/**
+ * Quay video theo thời gian thật: video dài 60 giây thì mất 60 giây để quay.
+ * MediaRecorder không có chế độ quay nhanh hơn thời gian thật.
+ */
+async function dungVideoTrongApp(chenPhuDe, bao) {
+  const mime = chonMime();
+  if (!mime) throw new Error('Trình duyệt này không quay được video. Dùng Chrome hoặc Edge bản mới.');
+
+  const [w, h] = KHUNG[DA.aspect] || KHUNG['9:16'];
+  const moc = mocThoiGian();
+  if (!moc.length) throw new Error('Chưa có cảnh nào.');
+  const tong = moc[moc.length - 1].den;
+  if (tong < 0.2) throw new Error('Dòng thời gian quá ngắn.');
+
+  bao({ pha: 'Đang nạp ảnh', phanTram: 0 });
+  try { await document.fonts.ready; } catch (e) { /* font mặc định vẫn vẽ được */ }
+
+  // Cảnh thiếu ảnh thì giữ ảnh trước đó, không để thủng khung.
+  const bm = [];
+  let cuoi = null;
+  for (const s of DA.scenes) {
+    if (s.anh) { try { cuoi = await createImageBitmap(s.anh); } catch (e) { /* ảnh hỏng */ } }
+    bm.push(cuoi);
+  }
+
+  const cv = document.createElement('canvas');
+  cv.width = w; cv.height = h;
+  const ctx = cv.getContext('2d', { alpha: false });
+  const kieuPD = CH.kieuPhuDe || 'dai';
+  const daiCao = (chenPhuDe && kieuPD === 'dai') ? caoDaiPhuDe(ctx, w, DA.aspect) : 0;
+  const caoAnh = h - daiCao;
+  veAnhLotKhung(ctx, bm[0], w, h, caoAnh);
+
+  const xp = $('#videoXem');
+  if (xp) { xp.width = w; xp.height = h; }
+  const xctx = xp ? xp.getContext('2d', { alpha: false }) : null;
+
+  const ac = new (window.AudioContext || window.webkitAudioContext)();
+  if (ac.state === 'suspended') await ac.resume();
+  const nguon = ac.createBufferSource();
+  nguon.buffer = pcmSangAudioBuffer(ac, pcmTheoMoc());
+  const dich = ac.createMediaStreamDestination();
+  nguon.connect(dich);
+  nguon.connect(ac.destination);   // nghe được trong lúc quay
+
+  const luong = cv.captureStream(30);
+  dich.stream.getAudioTracks().forEach(t => luong.addTrack(t));
+
+  const manh = [];
+  const rec = new MediaRecorder(luong, {
+    mimeType: mime,
+    videoBitsPerSecond: DA.aspect === '9:16' ? 8000000 : 6000000,
+    audioBitsPerSecond: 128000
+  });
+  rec.ondataavailable = e => { if (e.data && e.data.size) manh.push(e.data); };
+
+  const xong = new Promise(res => { rec.onstop = () => res(new Blob(manh, { type: mime })); });
+
+  dungVideoHuy = false;
+  rec.start(1000);
+  const t0 = ac.currentTime + 0.2;
+  nguon.start(t0);
+
+  let daAn = document.hidden;
+  const theoDoiAn = () => { if (document.hidden) daAn = true; };
+  document.addEventListener('visibilitychange', theoDoiAn);
+
+  const veCanh = (i, coChu) => {
+    veAnhLotKhung(ctx, bm[i], w, h, caoAnh);
+    if (chenPhuDe && coChu) vePhuDe(ctx, DA.scenes[i].loi, w, h, DA.aspect, kieuPD, daiCao);
+    if (xctx) xctx.drawImage(cv, 0, 0, xp.width, xp.height);
+  };
+
+  /* Vì sao KHÔNG dùng bộ đếm giờ để đổi cảnh:
+     tab không ở phía trước thì trình duyệt hãm requestAnimationFrame về không và
+     setInterval về khoảng 1 nhịp mỗi giây. Mốc đổi cảnh sẽ bị lỡ, video ra chỉ
+     có mỗi cảnh đầu. Nên mọi mốc đổi cảnh đặt hẳn lên ĐỒNG HỒ TIẾNG: mỗi mốc
+     một nguồn âm dài một mẫu, phát đúng giờ rồi báo onended. Luồng âm thanh
+     chạy ở tầng khác, trình duyệt không hãm. */
+  const imLang = ac.createGain();
+  imLang.gain.value = 0;
+  imLang.connect(ac.destination);
+  const hen = [];
+  const datHen = (giay, lam) => {
+    const n = ac.createBufferSource();
+    n.buffer = ac.createBuffer(1, 1, SR);
+    n.connect(imLang);
+    n.onended = lam;
+    n.start(t0 + Math.max(0, giay));
+    hen.push(n);
+  };
+  /* Chuyển cảnh chạy đúng trong khoảng lặng 0,25 giây giữa hai cảnh, nên nó
+     không ăn vào thời gian nói. Vòng vẽ dùng requestAnimationFrame để mượt;
+     tab bị ẩn thì rAF ngừng, hiệu ứng tự bỏ qua và cái hẹn ở moc[i+1].tu vẫn
+     cắt sang cảnh mới đúng giờ. Xấu đi một chút, không bao giờ sai. */
+  const kieuCC = CH.chuyenCanh || 'mo';
+  const chayChuyenCanh = (i) => {
+    if (kieuCC === 'cat' || i + 1 >= moc.length) return;
+    const tA = moc[i].den, tB = moc[i + 1].tu, dai = tB - tA;
+    if (dai <= 0.03) return;
+    const buoc = () => {
+      if (dungVideoHuy) return;
+      const t = ac.currentTime - t0;
+      if (t >= tB) { veCanh(i + 1, true); return; }
+      veChuyenCanh(ctx, bm[i], bm[i + 1], w, caoAnh, (t - tA) / dai, kieuCC);
+      if (chenPhuDe && kieuPD === 'dai') vePhuDe(ctx, '', w, h, DA.aspect, kieuPD, daiCao);
+      if (xctx) xctx.drawImage(cv, 0, 0, xp.width, xp.height);
+      requestAnimationFrame(buoc);
+    };
+    requestAnimationFrame(buoc);
+  };
+
+  const tiengDong = CH.tiengDong || 'khong';
+  moc.forEach((m, i) => {
+    datHen(m.tu, () => veCanh(i, true));
+    if (chenPhuDe && m.den < tong) datHen(m.den, () => veCanh(i, false));   // hết câu thì bỏ chữ, giữ hình
+    if (i + 1 < moc.length) {
+      datHen(m.den, () => chayChuyenCanh(i));
+      keuTiengDong(ac, dich, t0 + m.den, tiengDong, (CH.toTiengDong == null ? 35 : CH.toTiengDong) / 100);
+    }
+  });
+
+  /* Nhạc nền: phát nhỏ dưới lời đọc, lặp lại nếu ngắn hơn video, và tắt dần
+     ở hai giây cuối cho khỏi cụt. */
+  let nhacNguon = null;
+  if (DA.nhac && (CH.toNhac == null ? 12 : CH.toNhac) > 0) {
+    try {
+      const ab = await DA.nhac.arrayBuffer();
+      const buf = await ac.decodeAudioData(ab);
+      nhacNguon = ac.createBufferSource();
+      nhacNguon.buffer = buf;
+      nhacNguon.loop = true;
+      const gN = ac.createGain();
+      const vN = (CH.toNhac == null ? 12 : CH.toNhac) / 100;
+      gN.gain.setValueAtTime(vN, t0);
+      gN.gain.setValueAtTime(vN, t0 + Math.max(0, tong - 2));
+      gN.gain.linearRampToValueAtTime(0.0001, t0 + tong);
+      nhacNguon.connect(gN);
+      gN.connect(dich);
+      gN.connect(ac.destination);
+      nhacNguon.start(t0);
+    } catch (e) {
+      bao({ pha: 'Không đọc được nhạc nền, chạy tiếp không nhạc', phanTram: 0 });
+    }
+  }
+
+  await new Promise(res => {
+    let xongRoi = false;
+    const ket = () => { if (xongRoi) return; xongRoi = true; clearInterval(dh); res(); };
+    nguon.onended = ket;                       // chốt kết thúc, cũng không bị hãm
+    const nhip = () => {
+      const t = ac.currentTime - t0;
+      if (dungVideoHuy || t >= tong + 0.05) { ket(); return; }
+      let i = 0;
+      for (let k = 0; k < moc.length; k++) if (t >= moc[k].tu) i = k;
+      bao({
+        pha: 'Đang quay cảnh ' + (i + 1) + '/' + DA.scenes.length,
+        phanTram: Math.min(100, Math.round(t / tong * 100)),
+        con: Math.max(0, tong - t)
+      });
+    };
+    const dh = setInterval(nhip, 200);         // chỉ để cập nhật thanh tiến trình
+    nhip();
+  });
+  document.removeEventListener('visibilitychange', theoDoiAn);
+  hen.forEach(n => { try { n.onended = null; n.stop(); } catch (e) { /* đã xong */ } });
+
+  try { nguon.stop(); } catch (e) { /* đã dừng */ }
+  if (nhacNguon) { try { nhacNguon.stop(); } catch (e) { /* đã dừng */ } }
+  await sleep(350);            // để bộ quay nuốt nốt khung cuối
+  rec.stop();
+  const blob = await xong;
+  try { ac.close(); } catch (e) { /* thôi */ }
+  return { blob, duoi: duoiTuMime(mime), mime, giay: tong, biAn: daAn };
+}
+
+/* ---------------- ZIP (phương thức store, không cần thư viện) ---------------- */
+const CRC_BANG = (() => {
+  const t = new Uint32Array(256);
+  for (let i = 0; i < 256; i++) { let c = i; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[i] = c >>> 0; }
+  return t;
+})();
+function crc32(u8) {
+  let c = 0xFFFFFFFF;
+  for (let i = 0; i < u8.length; i++) c = CRC_BANG[(c ^ u8[i]) & 0xFF] ^ (c >>> 8);
+  return (c ^ 0xFFFFFFFF) >>> 0;
+}
+function taoZip(files) {                       // files: [{ten, data:Uint8Array}]
+  const enc = new TextEncoder();
+  const d = new Date();
+  const gio = ((d.getHours() << 11) | (d.getMinutes() << 5) | (d.getSeconds() >> 1)) & 0xFFFF;
+  const ngay = (((d.getFullYear() - 1980) << 9) | ((d.getMonth() + 1) << 5) | d.getDate()) & 0xFFFF;
+  const cuc = [], trung = [];
+  let off = 0;
+  for (const f of files) {
+    const ten = enc.encode(f.ten), c = crc32(f.data), n = f.data.length;
+    const h = new Uint8Array(30 + ten.length), hv = new DataView(h.buffer);
+    hv.setUint32(0, 0x04034b50, true); hv.setUint16(4, 20, true); hv.setUint16(6, 0x0800, true);
+    hv.setUint16(8, 0, true); hv.setUint16(10, gio, true); hv.setUint16(12, ngay, true);
+    hv.setUint32(14, c, true); hv.setUint32(18, n, true); hv.setUint32(22, n, true);
+    hv.setUint16(26, ten.length, true); hv.setUint16(28, 0, true);
+    h.set(ten, 30);
+    cuc.push(h, f.data);
+
+    const g = new Uint8Array(46 + ten.length), gv = new DataView(g.buffer);
+    gv.setUint32(0, 0x02014b50, true); gv.setUint16(4, 20, true); gv.setUint16(6, 20, true);
+    gv.setUint16(8, 0x0800, true); gv.setUint16(10, 0, true);
+    gv.setUint16(12, gio, true); gv.setUint16(14, ngay, true);
+    gv.setUint32(16, c, true); gv.setUint32(20, n, true); gv.setUint32(24, n, true);
+    gv.setUint16(28, ten.length, true); gv.setUint32(42, off, true);
+    g.set(ten, 46);
+    trung.push(g);
+    off += h.length + n;
+  }
+  const cdSize = trung.reduce((a, b) => a + b.length, 0);
+  const eo = new Uint8Array(22), ev = new DataView(eo.buffer);
+  ev.setUint32(0, 0x06054b50, true);
+  ev.setUint16(8, files.length, true); ev.setUint16(10, files.length, true);
+  ev.setUint32(12, cdSize, true); ev.setUint32(16, off, true);
+  return new Blob(cuc.concat(trung, [eo]), { type: 'application/zip' });
+}
+function taiVe(blob, ten) {
+  const u = URL.createObjectURL(blob), a = document.createElement('a');
+  a.href = u; a.download = ten; document.body.appendChild(a); a.click();
+  a.remove(); setTimeout(() => URL.revokeObjectURL(u), 4000);
+}
+const slug = s => boDau(s || 'du-an').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 50) || 'du-an';
+
+/* ---------------- hàng đợi ---------------- */
+async function hangDoi(viec, songSong, moiXong) {
+  let i = 0, xong = 0;
+  const chay = async () => {
+    while (i < viec.length) {
+      if (dungLai) return;
+      const k = i++;
+      try { await viec[k](); } catch (e) { /* lỗi đã báo trong từng việc */ }
+      xong++; if (moiXong) moiXong(xong, viec.length);
+    }
+  };
+  await Promise.all(Array.from({ length: Math.max(1, Math.min(songSong, viec.length)) }, chay));
+}
+
+/* ================================================================
+   GIAO DIỆN
+   ================================================================ */
+const BUOC = [
+  { n: 1, ten: 'Chủ đề' }, { n: 2, ten: 'Tiêu đề' }, { n: 3, ten: 'Kịch bản' },
+  { n: 4, ten: 'Hình ảnh' }, { n: 5, ten: 'Thumbnail' }, { n: 6, ten: 'Giọng đọc' }, { n: 7, ten: 'Xuất' }
+];
+function moBuoc(n) {
+  DA.step = n;
+  for (let i = 1; i <= 7; i++) $('#sec' + i).classList.toggle('hide', i !== n);
+  $('#hero').classList.toggle('hide', n !== 1);
+  veStepsNav();
+  if (n === 3) veKichBan();
+  if (n === 4) veAnhGrid();
+  if (n === 5) veThumb();
+  if (n === 6) veAudio();
+  if (n === 7) capNhatNhacVideo();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  luuDA();
+}
+function moDuoc(n) {
+  if (n <= 1) return true;
+  if (n === 2) return !!DA.titles.length || !!DA.title;
+  if (n >= 3) return !!DA.scenes.length;
+  return false;
+}
+function veStepsNav() {
+  $('#stepsNav').innerHTML = BUOC.map(b => {
+    const mo = moDuoc(b.n);
+    return '<button class="step-chip' + (DA.step === b.n ? ' is-active' : '') + '" data-step="' + b.n + '"' +
+      (mo ? '' : ' disabled') + '><span class="n">' + pad2(b.n) + '</span>' + esc(b.ten) + '</button>';
+  }).join('');
+}
+
+/* ---- bước 1 ---- */
+function veChipRow(sel, ds, dangChon, onPick) {
+  $(sel).innerHTML = ds.map(([v, t]) =>
+    '<button type="button" class="chip' + (v === dangChon ? ' is-active' : '') + '" data-v="' + esc(v) + '">' + esc(t) + '</button>'
+  ).join('');
+  $$(sel + ' .chip').forEach(b => b.onclick = () => { onPick(b.dataset.v); });
+}
+function veBuoc1() {
+  $('#fTopic').value = DA.topic;
+  veChipRow('#fLang', Object.keys(NGON_NGU).map(k => [k, NGON_NGU[k].co + ' · ' + NGON_NGU[k].ten]), DA.lang,
+    v => { DA.lang = v; veBuoc1(); luuDA(); });
+  veChipRow('#fTone', Object.keys(TONE).map(k => [k, TONE[k]]), DA.tone,
+    v => { DA.tone = v; veBuoc1(); luuDA(); });
+  veChipRow('#fAspect', [['9:16', 'Dọc 9:16 — Shorts, TikTok'], ['16:9', 'Ngang 16:9 — YouTube']], DA.aspect,
+    v => { DA.aspect = v; veBuoc1(); luuDA(); });
+  $('#fDur').value = String(DA.duration);
+  $('#fSec').value = String(DA.secPerScene);
+  capNhatDuTinh();
+  $('#projInfo').textContent = DA.title || DA.topic
+    ? (DA.title || DA.topic).slice(0, 60) + ' · ' + DA.scenes.length + ' cảnh'
+    : 'Chưa có gì';
+  $('#keyWarn').classList.toggle('hide', !!CH.key);
+}
+function capNhatDuTinh() {
+  const n = Math.max(4, Math.min(80, Math.round(DA.duration / DA.secPerScene)));
+  let t = 'Khoảng <b>' + n + ' cảnh</b>, mỗi cảnh ' + DA.secPerScene + ' giây. Tức là ' + n + ' ảnh và ' + n + ' lần đọc.';
+  if (n > 40) t += ' Số này khá lớn, sẽ tốn thời gian và dễ chạm hạn mức.';
+  $('#sceneEstimateTxt').innerHTML = t;
+}
+
+/* ---- bước 2 ---- */
+function veTieuDe() {
+  $('#titleList').innerHTML = DA.titles.map((t, i) =>
+    '<button type="button" class="title-opt' + (t === DA.title ? ' is-active' : '') + '" data-i="' + i + '">' +
+    '<span class="n">' + pad2(i + 1) + '</span><span class="txt">' + esc(t) + '</span></button>'
+  ).join('') || '<p class="muted">Chưa có tiêu đề nào. Quay lại bước 1 và bấm Tạo tiêu đề.</p>';
+  $$('#titleList .title-opt').forEach(b => b.onclick = () => {
+    DA.title = DA.titles[+b.dataset.i]; $('#fCustomTitle').value = ''; veTieuDe(); luuDA();
+  });
+  if (DA.title && !DA.titles.includes(DA.title)) $('#fCustomTitle').value = DA.title;
+}
+
+/* ---- bước 3 ---- */
+function veKichBan() {
+  const el = $('#sceneList');
+  el.innerHTML = DA.scenes.map((s, i) =>
+    '<div class="scene-row" data-id="' + s.id + '">' +
+      '<div class="scene-row__n">' + pad2(i + 1) +
+        '<button class="mini-btn" data-act="up" title="Lên"><svg class="icon icon--sm" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>' +
+        '<button class="mini-btn" data-act="down" title="Xuống"><svg class="icon icon--sm" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></button>' +
+        '<button class="mini-btn" data-act="del" title="Xoá"><svg class="icon icon--sm" viewBox="0 0 24 24"><path d="M5 7h14M9 7V4h6v3M7 7l1 13h8l1-13"/></svg></button>' +
+      '</div>' +
+      '<div class="scene-row__body">' +
+        '<div class="field"><label>Lời đọc</label>' +
+          '<textarea class="input" data-f="loi" style="min-height:70px">' + esc(s.loi) + '</textarea></div>' +
+        '<div class="scene-row__grid">' +
+          '<div class="field"><label>Mô tả hình (tiếng Anh)</label>' +
+            '<textarea class="input" data-f="hinh" style="min-height:70px">' + esc(s.hinh) + '</textarea></div>' +
+          '<div class="field"><label>Chữ trong ảnh</label>' +
+            '<input class="input" data-f="chu" value="' + esc(s.chu) + '"></div>' +
+        '</div>' +
+      '</div>' +
+    '</div>'
+  ).join('') || '<p class="muted">Chưa có cảnh nào.</p>';
+
+  $$('#sceneList [data-f]').forEach(inp => inp.oninput = () => {
+    const id = inp.closest('.scene-row').dataset.id;
+    const s = DA.scenes.find(x => x.id === id);
+    if (s) { s[inp.dataset.f] = inp.value; capNhatDemKichBan(); luuDA(); }
+  });
+  $$('#sceneList .mini-btn').forEach(b => b.onclick = () => {
+    const id = b.closest('.scene-row').dataset.id;
+    const i = DA.scenes.findIndex(x => x.id === id);
+    if (i < 0) return;
+    const a = b.dataset.act;
+    if (a === 'del') DA.scenes.splice(i, 1);
+    if (a === 'up' && i > 0) DA.scenes.splice(i - 1, 0, DA.scenes.splice(i, 1)[0]);
+    if (a === 'down' && i < DA.scenes.length - 1) DA.scenes.splice(i + 1, 0, DA.scenes.splice(i, 1)[0]);
+    veKichBan(); luuDA(true);
+  });
+  capNhatDemKichBan();
+  veStepsNav();   // thêm hoặc bớt cảnh thì các bước sau mở khoá theo
+}
+function capNhatDemKichBan() {
+  const chu = DA.scenes.reduce((a, s) => a + demChu(s.loi), 0);
+  const moc = mocThoiGian();
+  $('#scCount').textContent = DA.scenes.length + ' cảnh';
+  $('#scWords').textContent = chu + ' chữ';
+  $('#scTime').textContent = '~' + (moc.length ? Math.round(moc[moc.length - 1].den) : 0) + ' giây';
+}
+
+/* ---- bước 4 ---- */
+function veAnhGrid() {
+  const kh = DA.aspect === '9:16' ? 'shot--916' : 'shot--169';
+  const tl = $('#tlKhuyenNghi'); if (tl) tl.textContent = DA.aspect;
+  capNhatNguonVe();
+  $('#imgGrid').innerHTML = DA.scenes.map((s, i) => {
+    const u = s.anh ? URL.createObjectURL(s.anh) : '';
+    return '<article class="grid-card--flat" data-id="' + s.id + '">' +
+      '<div class="shot ' + kh + '">' +
+        '<span class="shot__badge">' + pad2(i + 1) + '</span>' +
+        (u ? '<img src="' + u + '" alt="Cảnh ' + (i + 1) + '">' : '<div class="shot__ph">Chưa vẽ</div>') +
+      '</div>' +
+      '<div class="shot-body">' +
+        '<p>' + esc(s.loi) + '</p>' +
+        '<span class="tag">' + esc(s.chu || '—') + '</span>' +
+        '<div class="card-foot">' +
+          '<button class="mini-btn" data-act="ve" title="Vẽ lại"><svg class="icon icon--sm" viewBox="0 0 24 24"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M20 9A8 8 0 006 6M4 15a8 8 0 0014 3"/></svg></button>' +
+          '<button class="mini-btn" data-act="tai" title="Tải ảnh lên"><svg class="icon icon--sm" viewBox="0 0 24 24"><path d="M12 19V7M7 12l5-5 5 5M4 20h16"/></svg></button>' +
+          '<button class="mini-btn" data-act="luu" title="Lưu ảnh"><svg class="icon icon--sm" viewBox="0 0 24 24"><path d="M12 3v12M7 11l5 5 5-5M4 20h16"/></svg></button>' +
+          '<button class="mini-btn" data-act="mau" title="Chọn làm ảnh mẫu khoá phong cách" style="' + (DA.anhMau === s.id ? 'background:var(--brand);color:var(--paper)' : '') + '"><svg class="icon icon--sm" viewBox="0 0 24 24"><path d="M12 3l2.6 6.3 6.4.5-4.9 4.2 1.5 6.2L12 17l-5.6 3.2 1.5-6.2L3 9.8l6.4-.5z"/></svg></button>' +
+          '<button class="mini-btn" data-act="xoa" title="Bỏ ảnh"><svg class="icon icon--sm" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
+        '</div>' +
+      '</div></article>';
+  }).join('') || '<p class="muted">Chưa có cảnh nào.</p>';
+
+  $$('#imgGrid .mini-btn').forEach(b => b.onclick = () => {
+    const id = b.closest('[data-id]').dataset.id;
+    const s = DA.scenes.find(x => x.id === id);
+    const i = DA.scenes.indexOf(s);
+    if (!s) return;
+    const a = b.dataset.act;
+    if (a === 've') {
+      if (!canKey()) return;
+      if (!CH.modelImage) return toast('warning', 'Chưa có model ảnh', 'Chưa cài extension thì mở Cài đặt chọn model ảnh, hoặc dùng nút tải ảnh lên.');
+      dungLai = false; veMotAnh(s).catch(() => {});
+    }
+    if (a === 'mau') {
+      if (!s.anh) return toast('warning', 'Cảnh này chưa có ảnh', 'Chọn một cảnh đã vẽ ưng ý làm mẫu.');
+      DA.anhMau = DA.anhMau === s.id ? null : s.id;
+      veAnhGrid(); luuDA(true);
+      toast(DA.anhMau ? 'success' : 'info', DA.anhMau ? 'Đã chọn cảnh ' + (i + 1) + ' làm ảnh mẫu' : 'Đã bỏ ảnh mẫu',
+        DA.anhMau ? 'Các cảnh vẽ sau sẽ bám theo nét của ảnh này.' : 'Các cảnh sau vẽ tự do trở lại.');
+    }
+    if (a === 'xoa') { if (DA.anhMau === s.id) DA.anhMau = null; s.anh = null; veAnhGrid(); demAnh(); luuDA(true); }
+    if (a === 'luu' && s.anh) taiVe(s.anh, 'canh-' + pad2(i + 1) + '.png');
+    if (a === 'tai') {
+      const f = $('#fileImg');
+      f.onchange = () => {
+        if (f.files[0]) { s.anh = f.files[0]; veAnhGrid(); demAnh(); luuDA(true); toast('success', 'Đã thay ảnh', 'Cảnh ' + (i + 1)); }
+        f.value = '';
+      };
+      f.click();
+    }
+  });
+  demAnh();
+}
+function demAnh() {
+  const co = DA.scenes.filter(s => s.anh).length;
+  $('#imgDone').textContent = co + ' / ' + DA.scenes.length + ' ảnh';
+  $('#imgBar').style.width = (DA.scenes.length ? co / DA.scenes.length * 100 : 0) + '%';
+}
+async function veMotAnh(s) {
+  const i = DA.scenes.indexOf(s);
+  const o = $('#imgGrid [data-id="' + s.id + '"] .shot');
+  if (o) o.innerHTML = '<span class="shot__badge">' + pad2(i + 1) + '</span><div class="shot__ph">Đang vẽ…</div>';
+  try {
+    s.anh = await veAnh(promptAnhCanh(moTaHinh(s), s.chu, DA.aspect, DA.lang), DA.aspect);
+    veAnhGrid(); luuDA();
+  } catch (e) {
+    veAnhGrid();
+    if (e.message !== 'Đã dừng theo yêu cầu.') toast('danger', 'Cảnh ' + (i + 1) + ' vẽ hỏng', e.message);
+    throw e;
+  }
+}
+
+/* ---- bước 5 ---- */
+function veThumb() {
+  const kh = DA.aspect === '9:16' ? 'shot--916' : 'shot--169';
+  const el = $('#thumbShot');
+  el.className = 'shot ' + kh;
+  el.innerHTML = DA.thumb
+    ? '<img src="' + URL.createObjectURL(DA.thumb) + '" alt="Thumbnail">'
+    : '<div class="shot__ph">Chưa có thumbnail</div>';
+  $('#btnDlThumb').classList.toggle('hide', !DA.thumb);
+  $('#fThumbIdea').value = DA.thumbIdea || '';
+}
+
+/* ---- bước 6 ---- */
+function veAudio() {
+  $('#audList').innerHTML = DA.scenes.map((s, i) => {
+    const co = !!s.pcm;
+    return '<div class="scene-row" data-id="' + s.id + '">' +
+      '<div class="scene-row__n">' + pad2(i + 1) + '</div>' +
+      '<div class="scene-row__body">' +
+        '<p style="font-size:var(--t-small)">' + esc(s.loi) + '</p>' +
+        '<div class="row">' +
+          (co ? '<audio controls src="' + URL.createObjectURL(new Blob([wavTuPcm(s.pcm)], { type: 'audio/wav' })) + '" style="flex:1;min-width:220px;max-width:420px"></audio>' +
+                '<span class="tag">' + giayPcm(s.pcm).toFixed(1) + ' giây</span>'
+              : '<span class="tag">Chưa đọc</span>') +
+          '<span class="spacer"></span>' +
+          '<button class="btn btn--ghost btn--sm" data-act="doc">' + (co ? 'Đọc lại' : 'Đọc cảnh này') + '</button>' +
+        '</div>' +
+      '</div></div>';
+  }).join('') || '<p class="muted">Chưa có cảnh nào.</p>';
+
+  $$('#audList [data-act="doc"]').forEach(b => b.onclick = () => {
+    const id = b.closest('[data-id]').dataset.id;
+    const s = DA.scenes.find(x => x.id === id);
+    if (!s) return;
+    if (!canKey()) return;
+    if (!CH.modelTts) return toast('warning', 'Chưa có model giọng đọc', 'Mở Cài đặt, bấm Kiểm tra key.');
+    dungLai = false; docMotCanh(s).catch(() => {});
+  });
+  demAudio();
+}
+function demAudio() {
+  const co = DA.scenes.filter(s => s.pcm).length;
+  const moc = mocThoiGian();
+  $('#audDone').textContent = co + ' / ' + DA.scenes.length + ' cảnh';
+  $('#audTotal').textContent = '~' + (moc.length ? Math.round(moc[moc.length - 1].den) : 0) + ' giây';
+  $('#audBar').style.width = (DA.scenes.length ? co / DA.scenes.length * 100 : 0) + '%';
+  const g = $('#audGiong');
+  if (g) g.textContent = (CH.voice || 'Kore') + ' · ' +
+    ({ bac: 'giọng Bắc', nam: 'giọng Nam' }[CH.vungMien] || 'model tự chọn');
+}
+async function docMotCanh(s) {
+  const i = DA.scenes.indexOf(s);
+  // Gọi hỏng thì bộ thử lại chạy tới 4 lần, mất cả chục giây. Không hiện gì
+  // trong lúc đó thì người bấm tưởng nút chết, bấm chồng lên nhau.
+  const nut = $('#audList [data-id="' + s.id + '"] [data-act="doc"]');
+  const nhanCu = nut ? nut.textContent : '';
+  if (nut) { nut.disabled = true; nut.textContent = 'Đang đọc…'; }
+  try {
+    s.pcm = await docLoi(s.loi);
+    veAudio(); luuDA();
+  } catch (e) {
+    if (nut) { nut.disabled = false; nut.textContent = nhanCu; }
+    if (e.message !== 'Đã dừng theo yêu cầu.') toast('danger', 'Cảnh ' + (i + 1) + ' đọc hỏng', e.message);
+    throw e;
+  }
+}
+
+/* ================================================================
+   SỰ KIỆN
+   ================================================================ */
+function canKey() {
+  if (!CH.key) { toast('warning', 'Chưa có API key', 'Mở Cài đặt, dán key rồi bấm Kiểm tra.'); moDrawer(true); return false; }
+  if (!CH.modelText) { toast('warning', 'Chưa chọn model', 'Mở Cài đặt và bấm Kiểm tra key để dò model.'); moDrawer(true); return false; }
+  return true;
+}
+function ban(sel, tren) { $(sel).disabled = tren; }
+
+document.addEventListener('click', e => {
+  const g = e.target.closest('[data-goto]');
+  if (g) moBuoc(+g.dataset.goto);
+  const st = e.target.closest('.step-chip');
+  if (st && !st.disabled) moBuoc(+st.dataset.step);
+});
+
+/* ---- bước 1 ---- */
+$('#fTopic').oninput = e => { DA.topic = e.target.value; luuDA(); };
+$('#fDur').onchange  = e => { DA.duration = +e.target.value; capNhatDuTinh(); luuDA(); };
+$('#fSec').onchange  = e => { DA.secPerScene = +e.target.value; capNhatDuTinh(); luuDA(); };
+
+$('#btnGenTitles').onclick = async () => {
+  if (!DA.topic.trim()) return toast('warning', 'Thiếu chủ đề', 'Nhập một câu mô tả ý tưởng đã.');
+  if (!canKey()) return;
+  ban('#btnGenTitles', true); nutBan = '#btnGenTitles'; $('#btnGenTitles').textContent = 'Đang nghĩ…';
+  try {
+    DA.titles = await taoTieuDe();
+    DA.title = DA.titles[0];
+    luuDA(true); veTieuDe(); moBuoc(2);
+    toast('success', 'Xong', 'Có ' + DA.titles.length + ' tiêu đề để chọn.');
+  } catch (e) { toast('danger', 'Không tạo được tiêu đề', e.message); }
+  finally { nutBan = null; ban('#btnGenTitles', false); $('#btnGenTitles').innerHTML = '<svg class="icon icon--sm" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg>Tạo tiêu đề'; }
+};
+$('#btnSkipTitle').onclick = () => {
+  if (!DA.topic.trim()) return toast('warning', 'Thiếu chủ đề', 'Nhập một câu mô tả ý tưởng đã.');
+  DA.titles = DA.titles || []; DA.title = DA.title || DA.topic;
+  veTieuDe(); moBuoc(2);
+};
+$('#btnMoreTitles').onclick = async () => {
+  if (!canKey()) return;
+  ban('#btnMoreTitles', true);
+  try {
+    const them = await taoTieuDe(DA.titles);
+    DA.titles = DA.titles.concat(them);
+    veTieuDe(); luuDA(true);
+  } catch (e) { toast('danger', 'Không tạo thêm được', e.message); }
+  finally { ban('#btnMoreTitles', false); }
+};
+$('#fCustomTitle').oninput = e => { if (e.target.value.trim()) { DA.title = e.target.value.trim(); veTieuDe(); luuDA(); } };
+
+$('#btnGenScript').onclick = async () => {
+  if (!DA.title) return toast('warning', 'Chưa chọn tiêu đề', 'Bấm một tiêu đề, hoặc tự viết một cái.');
+  if (!canKey()) return;
+  if (DA.scenes.length && !confirm('Kịch bản hiện có ' + DA.scenes.length + ' cảnh. Viết lại từ đầu sẽ mất hết ảnh và giọng đọc đã tạo. Tiếp tục?')) return;
+  ban('#btnGenScript', true); nutBan = '#btnGenScript'; $('#btnGenScript').textContent = 'Đang viết…';
+  try {
+    DA.scenes = await taoKichBan();
+    luuDA(true); moBuoc(3);
+    toast('success', 'Xong', DA.scenes.length + ' cảnh. Đọc lại và sửa cho vừa ý trước khi vẽ.');
+  } catch (e) { toast('danger', 'Không viết được kịch bản', e.message); }
+  finally { nutBan = null; ban('#btnGenScript', false); $('#btnGenScript').textContent = 'Viết kịch bản'; }
+};
+
+/* ---- bước 3 ---- */
+$('#btnAddScene').onclick = () => {
+  DA.scenes.push({ id: uid(), loi: '', hinh: '', chu: '', anh: null, pcm: null, giay: 0 });
+  veKichBan(); luuDA(true);
+};
+async function chayVietLai(che) {
+  if (!canKey()) return;
+  const b = che === 'ngan' ? '#btnShorter' : '#btnLonger';
+  ban(b, true); nutBan = b;
+  try { await vietLai(che); veKichBan(); luuDA(true); toast('success', 'Đã viết lại', 'Giọng đọc cũ không còn khớp, nên đọc lại ở bước 6.'); }
+  catch (e) { toast('danger', 'Không viết lại được', e.message); }
+  finally { nutBan = null; ban(b, false); $(b).textContent = che === 'ngan' ? 'Ngắn gọn hơn' : 'Chi tiết hơn'; }
+}
+$('#btnShorter').onclick = () => chayVietLai('ngan');
+$('#btnLonger').onclick  = () => chayVietLai('dai');
+$('#btnToVisuals').onclick = () => {
+  if (!DA.scenes.length) return toast('warning', 'Chưa có cảnh', 'Thêm ít nhất một cảnh.');
+  moBuoc(4);
+};
+
+/* ---- bước 4 ---- */
+$('#btnCheckImgModel').onclick = async () => {
+  if (!canKey()) return;
+  if (!CH.modelImage) return toast('warning', 'Chưa có model ảnh', 'Mở Cài đặt và chọn model ảnh.');
+  ban('#btnCheckImgModel', true);
+  try {
+    await veAnh('A single black stick figure standing on a flat beige background, clean lines.', DA.aspect);
+    $('#imgQuotaWarn').classList.add('hide');
+    toast('success', 'Model ảnh dùng được', CH.modelImage);
+  } catch (e) {
+    $('#imgQuotaTxt').textContent = e.message;
+    $('#imgQuotaWarn').classList.remove('hide');
+    toast('danger', 'Model ảnh chưa dùng được', e.message);
+  } finally { ban('#btnCheckImgModel', false); }
+};
+$('#btnGenAllImg').onclick = async () => {
+  const thieu = DA.scenes.filter(s => !s.anh);
+  if (!thieu.length) return toast('info', 'Đủ rồi', 'Mọi cảnh đều đã có ảnh.');
+
+  // Có extension thì đi đường extension: không tốn hạn mức API, không cần key.
+  if (cauCoMat()) {
+    const phut = Math.ceil(thieu.length * 45 / 60);
+    if (!confirm('Sẽ nhờ ChatGPT vẽ ' + thieu.length + ' ảnh.\n\n'
+      + 'Extension sẽ mở tab ChatGPT và tự chạy, mất khoảng ' + phut + ' phút. '
+      + 'Đừng đóng tab đó, cũng đừng gõ gì vào khung chat trong lúc chạy.\n\nChạy chứ?')) return;
+    return veBangExtension(thieu);
+  }
+
+  if (!canKey()) return;
+  if (!CH.modelImage) return toast('warning', 'Chưa có model ảnh', 'Mở Cài đặt và chọn model ảnh, hoặc cài extension ChatGPT Auto Ảnh để vẽ không tốn hạn mức.');
+  if (!confirm('Sẽ vẽ ' + thieu.length + ' ảnh bằng API. Việc này tốn hạn mức và có thể mất vài phút. Chạy chứ?')) return;
+
+  dungLai = false;
+  $('#btnStopImg').classList.remove('hide');
+  ban('#btnGenAllImg', true);
+  $('#imgStatus').className = 'status-pill status-pill--live';
+  $('#imgStatusTxt').textContent = 'Đang vẽ';
+  let hong = 0;
+  await hangDoi(thieu.map(s => async () => { try { await veMotAnh(s); } catch (e) { hong++; } }),
+    CH.songSong, () => demAnh());
+  $('#btnStopImg').classList.add('hide');
+  ban('#btnGenAllImg', false);
+  $('#imgStatus').className = 'status-pill status-pill--info';
+  $('#imgStatusTxt').textContent = dungLai ? 'Đã dừng' : 'Xong';
+  const daDung = dungLai;
+  dungLai = false;          // cờ chỉ có hiệu lực trong loạt vừa rồi
+  luuDA(true);
+  if (!daDung) hong ? toast('warning', 'Xong nhưng có lỗi', hong + ' cảnh chưa vẽ được. Bấm nút vẽ lại trên từng cảnh.')
+                    : toast('success', 'Vẽ xong', 'Đủ ảnh cho mọi cảnh.');
+};
+$('#btnStopImg').onclick = () => {
+  if (CAU.dangChay) { guiCau('dung'); toast('info', 'Đang dừng', 'Đã bảo extension dừng sau cảnh đang chạy.'); return; }
+  dungLai = true; toast('info', 'Đang dừng', 'Chờ các ảnh đang chạy kết thúc.');
+};
+$('#btnToThumb').onclick = () => moBuoc(5);
+
+/* ================================================================
+   CẦU NỐI TỰ ĐỘNG với extension ChatGPT Auto Ảnh
+   App gửi cả loạt prompt, extension mở tab ChatGPT, vẽ, rồi bắn ảnh
+   ngược về đây. Không phải đi chọn thư mục.
+   ================================================================ */
+const CAU = {
+  co: false,           // cầu nối có mặt không
+  dangChay: false,
+  viTriToId: [],       // vị trí trong loạt prompt (1-based) -> id cảnh
+  nhan: 0
+};
+
+function cauCoMat() {
+  return document.documentElement.dataset.nguoiQueCau === '1';
+}
+
+function guiCau(viec, them) {
+  window.postMessage(Object.assign({ nguon: 'nguoi-que', viec }, them || {}), window.location.origin);
+}
+
+function capNhatNguonVe() {
+  CAU.co = cauCoMat();
+  const el = $('#nguonVe');
+  if (!el) return;
+  if (CAU.co) {
+    el.innerHTML = '<span class="status-pill status-pill--live"><span class="status-pill__dot"></span>Extension ChatGPT đã nối</span>';
+    $('#btnGenAllImg').innerHTML = 'Vẽ tự động bằng ChatGPT';
+  } else {
+    el.innerHTML = '<span class="status-pill status-pill--info"><span class="status-pill__dot"></span>Không có extension · dùng API hoặc tự tải ảnh lên</span>';
+    $('#btnGenAllImg').innerHTML = 'Vẽ các cảnh còn thiếu';
+  }
+}
+
+function dataUrlSangBlob(u) {
+  const [dau, b64] = String(u).split(',');
+  const kieu = (dau.match(/data:([^;]+)/) || [, 'image/png'])[1];
+  return new Blob([b64ToBytes(b64)], { type: kieu });
+}
+
+window.addEventListener('message', async e => {
+  if (e.source !== window) return;
+  const d = e.data;
+  if (!d || d.nguon !== 'nguoi-que-dap') return;
+
+  if (d.viec === 'san-sang') { capNhatNguonVe(); return; }
+
+  if (d.viec === 'da-nhan') {
+    $('#imgStatusTxt').textContent = 'ChatGPT đang vẽ';
+    $('#imgStatus').className = 'status-pill status-pill--live';
+    toast('info', 'Đã giao việc cho ChatGPT', d.tong + ' cảnh. Cứ để tab ChatGPT chạy, ảnh sẽ tự về đây.');
+    return;
+  }
+
+  if (d.viec === 'tien-trinh') {
+    if (d.dong) $('#imgStatusTxt').textContent = String(d.dong).slice(0, 60);
+    return;
+  }
+
+  if (d.viec === 'anh') {
+    const id = CAU.viTriToId[d.viTri - 1];
+    const s = DA.scenes.find(x => x.id === id);
+    if (!s) return;
+    s.anh = dataUrlSangBlob(d.dataUrl);
+    CAU.nhan++;
+    veAnhGrid(); luuDA();
+    return;
+  }
+
+  if (d.viec === 'xong') {
+    CAU.dangChay = false;
+    ban('#btnGenAllImg', false);
+    $('#btnStopImg').classList.add('hide');
+    $('#imgStatus').className = 'status-pill status-pill--info';
+    $('#imgStatusTxt').textContent = 'Xong';
+    luuDA(true);
+    const thieu = DA.scenes.filter(x => !x.anh).length;
+    if (d.ly_do) toast('warning', 'ChatGPT chặn giữa chừng', d.ly_do + ' Đã nhận ' + CAU.nhan + ' ảnh.');
+    else if (thieu) toast('warning', 'Xong nhưng còn thiếu', 'Còn ' + thieu + ' cảnh chưa có ảnh. Bấm vẽ lại ở riêng từng cảnh, hoặc nạp từ thư mục Downloads\\nguoi-que.');
+    else toast('success', 'Đủ ảnh cho mọi cảnh', 'Sang bước 5 được rồi.');
+    return;
+  }
+
+  if (d.viec === 'loi') {
+    CAU.dangChay = false;
+    ban('#btnGenAllImg', false);
+    $('#btnStopImg').classList.add('hide');
+    $('#imgStatus').className = 'status-pill status-pill--danger';
+    $('#imgStatusTxt').textContent = 'Lỗi';
+    toast('danger', 'Extension báo lỗi', d.chiTiet || '');
+    return;
+  }
+
+  if (d.viec === 'da-dung') {
+    CAU.dangChay = false;
+    ban('#btnGenAllImg', false);
+    $('#btnStopImg').classList.add('hide');
+    $('#imgStatusTxt').textContent = 'Đã dừng';
+    return;
+  }
+});
+
+const blobSangDataUrl = b => new Promise((res, rej) => {
+  const fr = new FileReader();
+  fr.onload = () => res(fr.result);
+  fr.onerror = rej;
+  fr.readAsDataURL(b);
+});
+
+async function veBangExtension(thieu) {
+  CAU.viTriToId = thieu.map(s => s.id);
+  CAU.nhan = 0;
+  CAU.dangChay = true;
+  ban('#btnGenAllImg', true);
+  $('#btnStopImg').classList.remove('hide');
+  $('#imgStatus').className = 'status-pill status-pill--live';
+  $('#imgStatusTxt').textContent = 'Đang giao việc';
+
+  // Ảnh mẫu khoá phong cách: gửi kèm để ChatGPT bám theo nét đã ưng.
+  let anhMau = '';
+  const sMau = DA.anhMau && DA.scenes.find(x => x.id === DA.anhMau);
+  if (sMau && sMau.anh) {
+    try { anhMau = await blobSangDataUrl(sMau.anh); }
+    catch (e) { toast('warning', 'Không đọc được ảnh mẫu', 'Vẫn chạy, nhưng không khoá được phong cách.'); }
+  }
+
+  guiCau('veAnh', {
+    prompts: thieu.map(s => promptAnhMotDong(moTaHinh(s), s.chu, DA.aspect, DA.lang)),
+    tiLe: DA.aspect,
+    anhMau,
+    nghi: CH.nghiExt == null ? 15 : CH.nghiExt
+  });
+}
+
+/* ---- cầu nối với extension Gemini Auto Ảnh ---- */
+function canCanh() {
+  if (!DA.scenes.length) { toast('warning', 'Chưa có cảnh', 'Quay lại bước 3 viết kịch bản đã.'); return false; }
+  return true;
+}
+$('#btnChepPrompt').onclick = async () => {
+  if (!canCanh()) return;
+  const t = danhSachPromptExtension();
+  try {
+    await navigator.clipboard.writeText(t);
+    toast('success', 'Đã chép ' + DA.scenes.length + ' prompt', 'Mở popup extension, dán vào ô danh sách. Nhớ để trống ô Khuôn prompt và ô Câu thêm vào cuối.');
+  } catch (e) {
+    taiVe(new Blob([t], { type: 'text/plain;charset=utf-8' }), 'prompt-extension.txt');
+    toast('info', 'Trình duyệt chặn chép', 'Đã tải xuống file .txt thay thế, mở ra rồi chép tay.');
+  }
+};
+$('#btnTaiPrompt').onclick = () => {
+  if (!canCanh()) return;
+  taiVe(new Blob(['﻿' + danhSachPromptExtension()], { type: 'text/plain;charset=utf-8' }),
+    'prompt-extension-' + slug(DA.title || DA.topic) + '.txt');
+};
+function nhanAnhLoat(inp) {
+  inp.onchange = () => {
+    if (!inp.files || !inp.files.length) return;
+    const kq = ghepAnhTheoTen(inp.files);
+    inp.value = '';
+    if (!kq.gan) return toast('warning', 'Không nạp được ảnh nào',
+      'Thư mục không có file ảnh, hoặc tên file không khớp cảnh nào.');
+    veAnhGrid(); luuDA(true);
+    toast('success', 'Đã nạp ' + kq.gan + ' ảnh',
+      'Ghép ' + kq.cach + '.' + (kq.bo ? ' Bỏ qua ' + kq.bo + ' ảnh thừa.' : ''));
+  };
+  inp.click();
+}
+$('#btnNapThuMuc').onclick   = () => { if (canCanh()) nhanAnhLoat($('#fileAnhThuMuc')); };
+$('#btnNapNhieuFile').onclick = () => { if (canCanh()) nhanAnhLoat($('#fileAnhLoat')); };
+
+/* ---- bước 5 ---- */
+$('#fThumbIdea').oninput = e => { DA.thumbIdea = e.target.value; luuDA(); };
+$('#btnGenThumb').onclick = async () => {
+  if (!canKey()) return;
+  if (!CH.modelImage) return toast('warning', 'Chưa có model ảnh', 'Mở Cài đặt và chọn model ảnh.');
+  ban('#btnGenThumb', true); $('#btnGenThumb').textContent = 'Đang vẽ…';
+  try {
+    const y = DA.thumbIdea || (DA.scenes[0] && DA.scenes[0].hinh) || '';
+    DA.thumb = await veAnh(promptThumb(DA.title || DA.topic, y, DA.aspect), DA.aspect);
+    veThumb(); luuDA(true); toast('success', 'Xong', 'Đã có thumbnail.');
+  } catch (e) { toast('danger', 'Không vẽ được thumbnail', e.message); }
+  finally { ban('#btnGenThumb', false); $('#btnGenThumb').textContent = 'Vẽ thumbnail'; }
+};
+$('#btnUploadThumb').onclick = () => {
+  const f = $('#fileThumb');
+  f.onchange = () => { if (f.files[0]) { DA.thumb = f.files[0]; veThumb(); luuDA(true); } f.value = ''; };
+  f.click();
+};
+$('#btnDlThumb').onclick = () => { if (DA.thumb) taiVe(DA.thumb, 'thumbnail.png'); };
+$('#btnToAudio').onclick = () => moBuoc(6);
+
+/* ---- bước 6 ---- */
+$('#btnGenAllAud').onclick = async () => {
+  if (!canKey()) return;
+  if (!CH.modelTts) return toast('warning', 'Chưa có model giọng đọc', 'Mở Cài đặt và chọn model giọng đọc.');
+  const thieu = DA.scenes.filter(s => !s.pcm && s.loi.trim());
+  if (!thieu.length) return toast('info', 'Đủ rồi', 'Mọi cảnh đều đã có giọng đọc.');
+  dungLai = false;
+  $('#btnStopAud').classList.remove('hide');
+  ban('#btnGenAllAud', true);
+  $('#audStatus').className = 'status-pill status-pill--live';
+  $('#audStatusTxt').textContent = 'Đang đọc';
+  let hong = 0;
+  await hangDoi(thieu.map(s => async () => { try { await docMotCanh(s); } catch (e) { hong++; } }),
+    2, () => demAudio());
+  $('#btnStopAud').classList.add('hide');
+  ban('#btnGenAllAud', false);
+  $('#audStatus').className = 'status-pill status-pill--info';
+  $('#audStatusTxt').textContent = dungLai ? 'Đã dừng' : 'Xong';
+  const daDungA = dungLai;
+  dungLai = false;          // cờ chỉ có hiệu lực trong loạt vừa rồi
+  luuDA(true);
+  if (!daDungA) hong ? toast('warning', 'Xong nhưng có lỗi', hong + ' cảnh chưa đọc được.')
+                     : toast('success', 'Đọc xong', 'Phụ đề giờ khớp đúng thời lượng thật.');
+};
+$('#btnStopAud').onclick = () => { dungLai = true; };
+$('#btnDocLaiHet').onclick = async () => {
+  const co = DA.scenes.filter(s => s.pcm).length;
+  if (!DA.scenes.length) return toast('warning', 'Chưa có cảnh', '');
+  if (co && !confirm('Xoá ' + co + ' giọng đọc đã có rồi đọc lại toàn bộ bằng giọng đang chọn?\n\n'
+    + 'Dùng khi cả bài lệch giọng giữa chừng. Đọc lẻ một cảnh thì bấm Đọc lại ở riêng cảnh đó.')) return;
+  DA.scenes.forEach(s => { s.pcm = null; });
+  veAudio(); luuDA(true);
+  $('#btnGenAllAud').click();
+};
+$('#btnMerge').onclick = () => {
+  if (!DA.scenes.some(s => s.pcm)) return toast('warning', 'Chưa có gì để ghép', 'Đọc ít nhất một cảnh đã.');
+  if (mergedUrl) URL.revokeObjectURL(mergedUrl);
+  mergedUrl = URL.createObjectURL(new Blob([wavTuPcm(pcmTheoMoc())], { type: 'audio/wav' }));
+  const a = $('#audMerged'); a.src = mergedUrl; a.classList.remove('hide');
+  toast('success', 'Đã ghép', ds.length + ' cảnh nối liền, cách nhau 0,25 giây.');
+};
+$('#btnToExport').onclick = () => moBuoc(7);
+
+/* ---- bước 7 ---- */
+$('#btnZip').onclick = async () => {
+  if (!DA.scenes.length) return toast('warning', 'Chưa có gì', 'Chưa có cảnh nào để đóng gói.');
+  ban('#btnZip', true); $('#zipBarWrap').classList.remove('hide');
+  try {
+    const files = [];
+    const buoc = (p) => { $('#zipBar').style.width = p + '%'; };
+    const doc = async b => new Uint8Array(await b.arrayBuffer());
+
+    if ($('#exImg').checked) {
+      for (let i = 0; i < DA.scenes.length; i++) {
+        const s = DA.scenes[i];
+        if (s.anh) files.push({ ten: 'anh/canh-' + pad2(i + 1) + '.png', data: await doc(s.anh) });
+        buoc(Math.round(i / DA.scenes.length * 45));
+      }
+    }
+    if ($('#exThumb').checked && DA.thumb) files.push({ ten: 'thumbnail.png', data: await doc(DA.thumb) });
+    buoc(50);
+    if ($('#exAud').checked) {
+      DA.scenes.forEach((s, i) => { if (s.pcm) files.push({ ten: 'audio/canh-' + pad2(i + 1) + '.wav', data: wavTuPcm(s.pcm) }); });
+    }
+    buoc(65);
+    if ($('#exMerged').checked) {
+      if (DA.scenes.some(s => s.pcm)) files.push({ ten: 'audio/ca-bai.wav', data: wavTuPcm(pcmTheoMoc()) });
+    }
+    buoc(75);
+    const enc = new TextEncoder();
+    if ($('#exSrt').checked) files.push({ ten: 'phu-de.srt', data: enc.encode(taoSrt()) });
+    if ($('#exTxt').checked) files.push({ ten: 'kich-ban.txt', data: enc.encode('\uFEFF' + taoTxt()) });
+    if ($('#exCsv').checked) files.push({ ten: 'bang-dung.csv', data: enc.encode(taoCsv()) });
+    if ($('#exJson').checked) files.push({ ten: 'du-an.json', data: enc.encode(JSON.stringify(duAnJson(), null, 2)) });
+    if ($('#exVideo').checked) {
+      files.push({ ten: 'danh-sach-anh.txt', data: enc.encode(taoDanhSachAnh()) });
+      files.push({ ten: 'dung-video.bat', data: enc.encode(taoBatDungVideo($('#exSub').checked)) });
+    }
+    buoc(90);
+
+    if (!files.length) { toast('warning', 'Gói rỗng', 'Chưa chọn thứ gì để đóng gói.'); return; }
+    taiVe(taoZip(files), 'nguoi-que-' + slug(DA.title || DA.topic) + '.zip');
+    buoc(100);
+    toast('success', 'Đã tải gói', files.length + ' file.');
+  } catch (e) {
+    toast('danger', 'Đóng gói hỏng', e.message);
+  } finally {
+    ban('#btnZip', false);
+    setTimeout(() => { $('#zipBarWrap').classList.add('hide'); $('#zipBar').style.width = '0%'; }, 1200);
+  }
+};
+
+/* ---- dựng video trong app ---- */
+let videoBlob = null, videoDuoi = 'mp4', videoUrl = null;
+
+function capNhatNhacVideo() {
+  const el = $('#vidNhacTxt'); if (!el) return;
+  const moc = mocThoiGian();
+  const giay = moc.length ? moc[moc.length - 1].den : 0;
+  const mime = chonMime();
+  const dinh = mime ? duoiTuMime(mime).toUpperCase() : '—';
+  const thieuAnh = DA.scenes.filter(s => !s.anh).length;
+  const thieuTieng = DA.scenes.filter(s => !s.pcm).length;
+  let t = 'Video dài <b>' + giay.toFixed(1) + ' giây</b> thì quay mất đúng chừng ấy thời gian. '
+        + 'Giữ tab này ở phía trước, đừng chuyển sang tab khác giữa chừng. Định dạng ra: <b>' + dinh + '</b>.';
+  if (thieuAnh) t += ' Có ' + thieuAnh + ' cảnh chưa có ảnh riêng, sẽ giữ tạm ảnh của cảnh trước.';
+  if (thieuTieng) t += ' Có ' + thieuTieng + ' cảnh chưa có giọng đọc, chỗ đó để im lặng.';
+  t += '<br>Đang bật: <b>' + esc(CHUYEN_CANH[CH.chuyenCanh || 'mo']) + '</b> · tiếng động <b>'
+     + esc(TIENG_DONG[CH.tiengDong || 'vut']) + '</b>' + (DA.nhac ? ' · có nhạc nền' : '') + '.';
+  el.innerHTML = t;
+}
+
+$('#btnDungVideo').onclick = async () => {
+  if (!DA.scenes.length) return toast('warning', 'Chưa có cảnh', 'Chưa có gì để dựng.');
+  if (!DA.scenes.some(s => s.anh)) return toast('warning', 'Chưa có ảnh nào', 'Quay lại bước 4 lấy ảnh đã.');
+
+  ban('#btnDungVideo', true);
+  $('#btnHuyVideo').classList.remove('hide');
+  $('#btnLuuVideo').classList.add('hide');
+  $('#videoKq').classList.add('hide');
+  $('#vidBarWrap').classList.remove('hide');
+  try {
+    const kq = await dungVideoTrongApp($('#vidSub').checked, t => {
+      $('#vidBar').style.width = (t.phanTram || 0) + '%';
+      $('#vidTrangThai').textContent = t.pha + (t.con != null ? '  ·  còn ' + Math.ceil(t.con) + ' giây' : '');
+    });
+    videoBlob = kq.blob; videoDuoi = kq.duoi;
+    if (videoUrl) URL.revokeObjectURL(videoUrl);
+    videoUrl = URL.createObjectURL(videoBlob);
+    const v = $('#videoKq'); v.src = videoUrl; v.classList.remove('hide');
+    $('#btnLuuVideo').classList.remove('hide');
+    $('#vidTrangThai').textContent = 'Xong · ' + (videoBlob.size / 1048576).toFixed(1) + ' MB · ' + kq.duoi.toUpperCase();
+    if (kq.biAn) toast('warning', 'Đã dựng xong nhưng tab bị ẩn giữa chừng', 'Lúc tab không ở phía trước, trình duyệt hãm việc vẽ nên hình có thể giật hoặc đổi cảnh trễ. Xem thử, thấy không ổn thì dựng lại và giữ tab ở phía trước.');
+    else toast('success', 'Đã dựng xong', 'Xem thử ngay bên dưới. Ưng thì bấm Lưu video.');
+  } catch (e) {
+    $('#vidTrangThai').textContent = 'Hỏng: ' + e.message;
+    toast('danger', 'Không dựng được', e.message);
+  } finally {
+    ban('#btnDungVideo', false);
+    $('#btnHuyVideo').classList.add('hide');
+    setTimeout(() => { $('#vidBarWrap').classList.add('hide'); $('#vidBar').style.width = '0%'; }, 1500);
+  }
+};
+$('#btnHuyVideo').onclick = () => { dungVideoHuy = true; toast('info', 'Đang huỷ', 'Phần đã quay vẫn giữ lại được.'); };
+$('#btnLuuVideo').onclick = () => {
+  if (videoBlob) taiVe(videoBlob, 'nguoi-que-' + slug(DA.title || DA.topic) + '.' + videoDuoi);
+};
+
+/* ---- dự án ra/vào ---- */
+function duAnJson() {
+  return {
+    app: 'nguoi-que', phienBan: 1, luuLuc: new Date().toISOString(),
+    topic: DA.topic, lang: DA.lang, tone: DA.tone, duration: DA.duration,
+    secPerScene: DA.secPerScene, aspect: DA.aspect, titles: DA.titles, title: DA.title,
+    thumbIdea: DA.thumbIdea,
+    scenes: DA.scenes.map(s => ({ loi: s.loi, hinh: s.hinh, chu: s.chu }))
+  };
+}
+$('#btnExportProj').onclick = () => {
+  taiVe(new Blob([JSON.stringify(duAnJson(), null, 2)], { type: 'application/json' }),
+    'du-an-' + slug(DA.title || DA.topic) + '.json');
+};
+$('#btnImportProj').onclick = () => $('#fileProj').click();
+$('#fileProj').onchange = e => {
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const d = JSON.parse(r.result);
+      if (!d || !Array.isArray(d.scenes)) throw new Error('File không đúng định dạng.');
+      Object.assign(DA, {
+        topic: d.topic || '', lang: d.lang || 'vi', tone: d.tone || 'stoic',
+        duration: d.duration || 60, secPerScene: d.secPerScene || 3, aspect: d.aspect || '9:16',
+        titles: d.titles || [], title: d.title || '', thumbIdea: d.thumbIdea || '',
+        scenes: d.scenes.map(s => ({ id: uid(), loi: s.loi || '', hinh: s.hinh || '', chu: s.chu || '',
+                                     anh: null, pcm: null, giay: 0 })),
+        thumb: null
+      });
+      luuDA(true); veBuoc1(); veTieuDe(); moBuoc(DA.scenes.length ? 3 : 1);
+      toast('success', 'Đã mở dự án', DA.scenes.length + ' cảnh. File .json chỉ chứa chữ, ảnh và giọng đọc phải tạo lại.');
+    } catch (err) { toast('danger', 'Không mở được file', err.message); }
+    e.target.value = '';
+  };
+  r.readAsText(f);
+};
+$('#btnNewProj').onclick = () => {
+  if (!confirm('Bắt đầu dự án mới? Dự án hiện tại kể cả ảnh và giọng đọc sẽ bị xoá khỏi máy.')) return;
+  DA = { topic: '', lang: 'vi', tone: 'stoic', duration: 60, secPerScene: 3, aspect: '9:16',
+         titles: [], title: '', thumbIdea: '', anhMau: null, nhac: null, nhacTen: '',
+         scenes: [], thumb: null, step: 1, taoLuc: Date.now() };
+  luuDA(true); veBuoc1(); moBuoc(1);
+};
+
+/* ---- drawer ---- */
+function moDrawer(mo) {
+  $('#drawer').classList.toggle('is-open', mo);
+  $('#drawerBg').classList.toggle('is-open', mo);
+  $('#drawer').setAttribute('aria-hidden', mo ? 'false' : 'true');
+}
+$('#btnSettings').onclick    = () => moDrawer(true);
+$('#btnCloseDrawer').onclick = () => moDrawer(false);
+$('#drawerBg').onclick       = () => moDrawer(false);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') moDrawer(false); });
+
+$('#fKey').oninput = e => { CH.key = e.target.value.trim(); luuCH(); $('#keyWarn').classList.toggle('hide', !CH.key); };
+$('#btnShowKey').onclick = () => {
+  const i = $('#fKey');
+  i.type = i.type === 'password' ? 'text' : 'password';
+  $('#btnShowKey').textContent = i.type === 'password' ? 'Hiện key' : 'Ẩn key';
+};
+$('#btnClearKey').onclick = () => { CH.key = ''; $('#fKey').value = ''; luuCH(); $('#keyWarn').classList.remove('hide'); toast('info', 'Đã xoá key', ''); };
+$('#btnTestKey').onclick = async () => {
+  if (!CH.key) return toast('warning', 'Chưa dán key', '');
+  ban('#btnTestKey', true); $('#btnTestKey').textContent = 'Đang kiểm…';
+  try {
+    CH.models = await doModel();
+    if (!CH.modelText || !CH.models.includes(CH.modelText)) tuChon(); else veSelectModel();
+    luuCH();
+    $('#keyResult').innerHTML = '<div class="alert alert--success"><svg class="icon" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>' +
+      '<div><div class="title">Key chạy được</div><div class="msg">Thấy ' + CH.models.length + ' model. Đã chọn: ' +
+      esc(CH.modelText || '—') + ' · ' + esc(CH.modelImage || 'không có model ảnh') + ' · ' + esc(CH.modelTts || 'không có model đọc') + '</div></div></div>';
+    $('#keyWarn').classList.add('hide');
+    if (!CH.modelImage) toast('warning', 'Không có model ảnh', 'Key này không truy cập được model ảnh nào. Bạn vẫn dùng được kịch bản, giọng đọc và phụ đề, phần ảnh thì tải lên thủ công.');
+  } catch (e) {
+    $('#keyResult').innerHTML = '<div class="alert alert--danger"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2L2 21h20L12 2z"/><path d="M12 9v6M12 18v1"/></svg>' +
+      '<div><div class="title">Key chưa dùng được</div><div class="msg">' + esc(e.message) + '</div></div></div>';
+  } finally { ban('#btnTestKey', false); $('#btnTestKey').textContent = 'Kiểm tra key'; }
+};
+$('#btnAutoPick').onclick = () => {
+  if (!CH.models.length) return toast('warning', 'Chưa dò model', 'Bấm Kiểm tra key trước.');
+  tuChon(); toast('success', 'Đã chọn lại', CH.modelText + ' · ' + (CH.modelImage || '—') + ' · ' + (CH.modelTts || '—'));
+};
+$('#fModelText').onchange  = e => { CH.modelText = e.target.value; luuCH(); };
+$('#fModelImage').onchange = e => { CH.modelImage = e.target.value; luuCH(); };
+$('#fModelTts').onchange   = e => { CH.modelTts = e.target.value; luuCH(); };
+$('#fVoice').onchange      = e => { CH.voice = e.target.value; luuCH(); };
+$('#fSpeed').onchange      = e => { CH.speed = e.target.value; luuCH(); };
+$('#fVung').onchange       = e => { CH.vungMien = e.target.value; luuCH(); };
+$('#fKieuPD').onchange     = e => { CH.kieuPhuDe = e.target.value; luuCH(); };
+$('#fNoDiacritic').onchange= e => { CH.boDauAnh = e.target.checked; luuCH(); };
+$('#fConc').onchange       = e => { CH.songSong = +e.target.value; luuCH(); };
+/* ---- hiệu ứng, tiếng động, nhạc nền ---- */
+function veChonHieuUng() {
+  $('#fCC').innerHTML = Object.entries(CHUYEN_CANH)
+    .map(([v, t]) => '<option value="' + v + '"' + (v === (CH.chuyenCanh || 'mo') ? ' selected' : '') + '>' + esc(t) + '</option>').join('');
+  $('#fTD').innerHTML = Object.entries(TIENG_DONG)
+    .map(([v, t]) => '<option value="' + v + '"' + (v === (CH.tiengDong || 'vut') ? ' selected' : '') + '>' + esc(t) + '</option>').join('');
+  const a = CH.toTiengDong == null ? 35 : CH.toTiengDong;
+  const b = CH.toNhac == null ? 12 : CH.toNhac;
+  $('#fToTD').value = a; $('#fToTDTxt').textContent = a + '%';
+  $('#fToNhac').value = b; $('#fToNhacTxt').textContent = b + '%';
+  $('#nhacTen').textContent = DA.nhacTen || 'Chưa có';
+}
+$('#fCC').onchange = e => { CH.chuyenCanh = e.target.value; luuCH(); };
+$('#fTD').onchange = e => { CH.tiengDong = e.target.value; luuCH(); ngheThuTiengDong(); };
+$('#fToTD').oninput = e => { CH.toTiengDong = +e.target.value; $('#fToTDTxt').textContent = e.target.value + '%'; luuCH(); };
+$('#fToNhac').oninput = e => { CH.toNhac = +e.target.value; $('#fToNhacTxt').textContent = e.target.value + '%'; luuCH(); };
+
+function ngheThuTiengDong() {
+  if (!CH.tiengDong || CH.tiengDong === 'khong') return;
+  try {
+    const ac = new (window.AudioContext || window.webkitAudioContext)();
+    keuTiengDong(ac, ac.destination, ac.currentTime + 0.05, CH.tiengDong, (CH.toTiengDong == null ? 35 : CH.toTiengDong) / 100);
+    setTimeout(() => { try { ac.close(); } catch (e) { /* xong rồi */ } }, 900);
+  } catch (e) { toast('warning', 'Không phát thử được', e.message); }
+}
+$('#btnNgheTD').onclick = ngheThuTiengDong;
+
+$('#btnChonNhac').onclick = () => $('#fileNhac').click();
+$('#fileNhac').onchange = e => {
+  const f = e.target.files[0]; if (!f) return;
+  DA.nhac = f; DA.nhacTen = f.name + ' · ' + (f.size / 1048576).toFixed(1) + ' MB';
+  $('#nhacTen').textContent = DA.nhacTen;
+  luuDA(true);
+  toast('success', 'Đã thêm nhạc nền', 'Nhạc chỉ nằm trong dự án này, không đụng tới file gốc.');
+  e.target.value = '';
+};
+$('#btnBoNhac').onclick = () => {
+  DA.nhac = null; DA.nhacTen = '';
+  $('#nhacTen').textContent = 'Chưa có';
+  luuDA(true);
+};
+
+$('#btnWipe').onclick = async () => {
+  if (!confirm('Xoá sạch dự án, ảnh, giọng đọc và API key khỏi trình duyệt này? Không lấy lại được.')) return;
+  await DB.del('duan');
+  localStorage.removeItem('nguoi-que:cauhinh');
+  location.reload();
+};
+
+/* ================================================================
+   KHỞI ĐỘNG
+   ================================================================ */
+(async function khoiDong() {
+  napCH();
+  await napDA();
+
+  $('#fKey').value = CH.key || '';
+  $('#fVoice').innerHTML = GIONG.map(v => '<option value="' + v + '"' + (v === CH.voice ? ' selected' : '') + '>' + v + '</option>').join('');
+  $('#fSpeed').value = CH.speed || '';
+  $('#fVung').value = CH.vungMien == null ? 'bac' : CH.vungMien;
+  $('#fKieuPD').value = CH.kieuPhuDe || 'dai';
+  $('#fNoDiacritic').checked = !!CH.boDauAnh;
+  $('#fConc').value = String(CH.songSong || 2);
+  if (CH.models && CH.models.length) veSelectModel();
+  veChonHieuUng();
+
+  veBuoc1();
+  veTieuDe();
+  moBuoc(DA.step && moDuoc(DA.step) ? DA.step : 1);
+  if (DA.scenes.length) toast('info', 'Đã mở lại dự án cũ', DA.scenes.length + ' cảnh, ' +
+    DA.scenes.filter(s => s.anh).length + ' ảnh, ' + DA.scenes.filter(s => s.pcm).length + ' giọng đọc.');
+
+  if (!CH.key) $('#keyWarn').classList.remove('hide');
+
+  // Content script cắm cờ lúc document_idle, có thể sau khi app dựng xong.
+  capNhatNguonVe();
+  for (let i = 0; i < 6 && !CAU.co; i++) { await sleep(500); capNhatNguonVe(); }
+  if (CAU.co) guiCau('kiemTra');
+})();
+</script>
+</body>
+</html>

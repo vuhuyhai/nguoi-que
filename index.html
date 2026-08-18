@@ -364,6 +364,15 @@ textarea.input{min-height:110px;line-height:var(--lh-body);resize:vertical;}
 
 .full-bleed-rule{border:none;border-top:1px solid var(--line);margin:0;width:100%;}
 
+/* Vùng chạm trên điện thoại. Bản gọn 40px vừa mắt khi dùng chuột nhưng hụt so
+   với mức 48px cho ngón tay, nên chỉ nới ở màn hình nhỏ, desktop giữ nguyên. */
+@media(max-width:768px){
+  .btn--sm{min-height:48px;}
+  .chip,.step-chip{min-height:48px;}
+  .mini-btn{width:44px;height:44px;}
+  .scene-row{grid-template-columns:64px 1fr;}
+}
+
 @media(prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important;}}
 @media print{.topbar,.drawer,.drawer-bg,.toasts,.marquee{display:none !important;}}
 </style>

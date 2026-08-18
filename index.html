@@ -294,6 +294,9 @@ textarea.input{min-height:110px;line-height:var(--lh-body);resize:vertical;}
 .shot--169{aspect-ratio:16/9;} .shot--916{aspect-ratio:9/16;}
 .shot__ph{font-family:var(--font-mono);font-size:var(--t-label);color:var(--ink-3);text-align:center;
   padding:var(--s-4);}
+.shot--hong{background:var(--danger-bg);}
+.shot--hong::after{content:"Ảnh hỏng, không đọc được. Bỏ rồi lấy lại.";
+  font-family:var(--font-mono);font-size:var(--t-label);color:var(--danger-text);text-align:center;padding:var(--s-4);}
 .shot__badge{position:absolute;left:var(--s-2);top:var(--s-2);background:var(--ink);color:var(--paper);
   font-family:var(--font-mono);font-weight:600;font-size:var(--t-label);padding:var(--s-1) var(--s-2);
   border-radius:var(--radius);font-variant-numeric:tabular-nums;}
@@ -2113,12 +2116,46 @@ async function dungVideoTrongApp(chenPhuDe, bao) {
   bao({ pha: 'Đang nạp ảnh', phanTram: 0 });
   try { await document.fonts.ready; } catch (e) { /* font mặc định vẫn vẽ được */ }
 
+  /* Giải mã ảnh.
+     createImageBitmap là đường nhanh nhưng kén: gặp blob sai kiểu hoặc dữ liệu
+     cụt là nó ném. Đường lùi qua thẻ <img> chịu được nhiều hơn vì trình duyệt
+     tự đoán định dạng theo nội dung chứ không tin vào kiểu khai báo.
+     Cảnh nào hỏng cả hai đường thì GHI TÊN LẠI. Trước đây chỗ này nuốt lỗi im
+     lặng, nên ảnh hỏng biến thành video trắng mà không một lời báo. */
+  const giaiMaAnh = async (blob) => {
+    try { return await createImageBitmap(blob); } catch (e) { /* thử đường lùi */ }
+    const u = URL.createObjectURL(blob);
+    try {
+      const img = new Image();
+      await new Promise((res, rej) => {
+        img.onload = res;
+        img.onerror = () => rej(new Error('trình duyệt không đọc được ảnh này'));
+        img.src = u;
+      });
+      return await createImageBitmap(img);
+    } finally { URL.revokeObjectURL(u); }
+  };
+
   // Cảnh thiếu ảnh thì giữ ảnh trước đó, không để thủng khung.
   const bm = [];
+  const hongAnh = [];
   let cuoi = null;
-  for (const s of DA.scenes) {
-    if (s.anh) { try { cuoi = await createImageBitmap(s.anh); } catch (e) { /* ảnh hỏng */ } }
+  for (let i = 0; i < DA.scenes.length; i++) {
+    const s = DA.scenes[i];
+    if (s.anh) {
+      try { cuoi = await giaiMaAnh(s.anh); }
+      catch (e) { hongAnh.push(i + 1); }
+    }
     bm.push(cuoi);
+    bao({ pha: 'Đang nạp ảnh ' + (i + 1) + '/' + DA.scenes.length, phanTram: 0 });
+  }
+
+  // Thà dừng ngay còn hơn để người ngồi chờ hết cả phút rồi nhận video trắng.
+  if (!bm.some(Boolean)) {
+    throw new Error(hongAnh.length
+      ? 'Không giải mã được ảnh nào. ' + hongAnh.length + ' cảnh có file ảnh nhưng file hỏng. '
+        + 'Vào bước 4, bấm dấu X để bỏ ảnh hỏng rồi vẽ lại hoặc tự tải ảnh khác lên.'
+      : 'Chưa cảnh nào có ảnh. Quay lại bước 4 lấy ảnh đã.');
   }
 
   const cv = document.createElement('canvas');
@@ -2269,7 +2306,7 @@ async function dungVideoTrongApp(chenPhuDe, bao) {
   rec.stop();
   const blob = await xong;
   try { ac.close(); } catch (e) { /* thôi */ }
-  return { blob, duoi: duoiTuMime(mime), mime, giay: tong, biAn: daAn };
+  return { blob, duoi: duoiTuMime(mime), mime, giay: tong, biAn: daAn, hongAnh };
 }
 
 /* ---------------- ZIP (phương thức store, không cần thư viện) ---------------- */
@@ -2473,7 +2510,7 @@ function veAnhGrid() {
     return '<article class="grid-card--flat" data-id="' + s.id + '">' +
       '<div class="shot ' + kh + '">' +
         '<span class="shot__badge">' + pad2(i + 1) + '</span>' +
-        (u ? '<img src="' + u + '" alt="Cảnh ' + (i + 1) + '">' : '<div class="shot__ph">Chưa vẽ</div>') +
+        (u ? '<img src="' + u + '" alt="Cảnh ' + (i + 1) + '" onerror="this.closest(&quot;.shot&quot;).classList.add(&quot;shot--hong&quot;);this.remove()">' : '<div class="shot__ph">Chưa vẽ</div>') +
       '</div>' +
       '<div class="shot-body">' +
         '<p>' + esc(s.loi) + '</p>' +
@@ -2778,10 +2815,19 @@ function capNhatNguonVe() {
   }
 }
 
+/* Trả null nếu chuỗi không phải data URL ảnh tử tế. Trước đây hàm này luôn
+   trả về một Blob, kể cả khi dữ liệu rác, nên cảnh vẫn được tính là ĐÃ CÓ ẢNH
+   và lỗi chỉ lộ ra lúc dựng video. */
 function dataUrlSangBlob(u) {
-  const [dau, b64] = String(u).split(',');
-  const kieu = (dau.match(/data:([^;]+)/) || [, 'image/png'])[1];
-  return new Blob([b64ToBytes(b64)], { type: kieu });
+  const chuoi = String(u || '');
+  const dau = chuoi.indexOf(',');
+  if (!/^data:image//i.test(chuoi) || dau < 0) return null;
+  const kieu = (chuoi.slice(0, dau).match(/data:([^;]+)/) || [, 'image/png'])[1];
+  try {
+    const byte = b64ToBytes(chuoi.slice(dau + 1));
+    if (byte.length < 128) return null;          // nhỏ thế này không phải ảnh thật
+    return new Blob([byte], { type: kieu });
+  } catch (e) { return null; }
 }
 
 window.addEventListener('message', async e => {
@@ -2807,7 +2853,12 @@ window.addEventListener('message', async e => {
     const id = CAU.viTriToId[d.viTri - 1];
     const s = DA.scenes.find(x => x.id === id);
     if (!s) return;
-    s.anh = dataUrlSangBlob(d.dataUrl);
+    const anhMoi = dataUrlSangBlob(d.dataUrl);
+    if (!anhMoi) {
+      toast('warning', 'Cảnh ' + (DA.scenes.indexOf(s) + 1) + ' nhận về ảnh hỏng', 'Bỏ qua cảnh này. Vẽ lại riêng nó sau.');
+      return;
+    }
+    s.anh = anhMoi;
     CAU.nhan++;
     veAnhGrid(); luuDA();
     return;
@@ -3068,7 +3119,9 @@ $('#btnDungVideo').onclick = async () => {
     const v = $('#videoKq'); v.src = videoUrl; v.classList.remove('hide');
     $('#btnLuuVideo').classList.remove('hide');
     $('#vidTrangThai').textContent = 'Xong · ' + (videoBlob.size / 1048576).toFixed(1) + ' MB · ' + kq.duoi.toUpperCase();
-    if (kq.biAn) toast('warning', 'Đã dựng xong nhưng tab bị ẩn giữa chừng', 'Lúc tab không ở phía trước, trình duyệt hãm việc vẽ nên hình có thể giật hoặc đổi cảnh trễ. Xem thử, thấy không ổn thì dựng lại và giữ tab ở phía trước.');
+    if (kq.hongAnh && kq.hongAnh.length) toast('warning', kq.hongAnh.length + ' cảnh có ảnh hỏng',
+      'Cảnh ' + kq.hongAnh.join(', ') + ' có file ảnh nhưng không đọc được, video giữ tạm ảnh của cảnh trước. Vào bước 4 bỏ ảnh đó rồi lấy lại.');
+    else if (kq.biAn) toast('warning', 'Đã dựng xong nhưng tab bị ẩn giữa chừng', 'Lúc tab không ở phía trước, trình duyệt hãm việc vẽ nên hình có thể giật hoặc đổi cảnh trễ. Xem thử, thấy không ổn thì dựng lại và giữ tab ở phía trước.');
     else toast('success', 'Đã dựng xong', 'Xem thử ngay bên dưới. Ưng thì bấm Lưu video.');
   } catch (e) {
     $('#vidTrangThai').textContent = 'Hỏng: ' + e.message;
